@@ -1,1 +1,1 @@
-module "github.com/VXiaoXin/yiu-go"
+module "github.com/fidelyiu/yiu-go"
