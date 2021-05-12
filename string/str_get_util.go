@@ -57,11 +57,28 @@ func GetLastByteNoErr(str string) byte {
 //
 // " \n\r\n Hello Yiu!  \n\r\n  " > ["\n", "\r", " "] > "Hello Yiu!"
 func GetTrimWithoutTarget(str string, targetStrArr ...string) string {
+	return trimWithoutTarget(str, strings.Trim, targetStrArr...)
+}
+
+// GetTrimLeftWithoutTarget 获取去除左边指定字符串后的字符串，不修改原字符串
+func GetTrimLeftWithoutTarget(str string, targetStrArr ...string) string {
+	return trimWithoutTarget(str, strings.TrimLeft, targetStrArr...)
+}
+
+// GetTrimRightWithoutTarget 获取去除右边指定字符串后的字符串，不修改原字符串
+func GetTrimRightWithoutTarget(str string, targetStrArr ...string) string {
+	return trimWithoutTarget(str, strings.TrimRight, targetStrArr...)
+}
+
+func trimWithoutTarget(
+	str string,
+	trimFunc func(s, cutset string) string,
+	targetStrArr ...string) string {
 	for {
 		strLength := len(str)
 		changeLength := 0
 		for _, v := range targetStrArr {
-			str = strings.Trim(str, v)
+			str = trimFunc(str, v)
 			changeLength = len(str)
 		}
 		if strLength == changeLength {
