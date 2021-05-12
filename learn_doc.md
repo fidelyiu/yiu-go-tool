@@ -1,6 +1,7 @@
 ### 1.快捷链接
 - [Go开发工程师](https://www.yuque.com/fidel-yiu/kae3eu)
 - [Go语言学习笔记](https://www.yuque.com/fidel-yiu/ftcdeg)
+- [找依赖库的网站](https://awesome-go.com/)
 
 ### 2.参考项目
 - Java完整工具包
@@ -43,3 +44,10 @@
 - 遍历
 - 用map
 
+### 6.和切片排序相关的库
+
+- Star 159 [toolbox](https://github.com/viant/toolbox)
+- Star 69 [gofp](https://github.com/rbrahul/gofp)
+- Star 41 [slice](https://github.com/psampaz/slice) 我使用这个
+- Star 24 [ugo](https://github.com/alxrm/ugo)
+- Star 23 [slicer](https://github.com/leaanthony/slicer)
