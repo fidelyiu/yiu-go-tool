@@ -127,3 +127,47 @@ func TestGetTrimWithoutTarget(t *testing.T) {
 		})
 	}
 }
+
+func TestGetDeleteTargetStr(t *testing.T) {
+	type args struct {
+		str          string
+		targetStrArr []string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "正常测试",
+			args: args{
+				str:          "Hell\ro- \nYiu!",
+				targetStrArr: []string{"\r", "\n", "-"},
+			},
+			want: "Hello Yiu!",
+		},
+		{
+			name: "空测试",
+			args: args{
+				str:          "",
+				targetStrArr: []string{"\r", "\n", "-"},
+			},
+			want: "",
+		},
+		{
+			name: "长字符串替换",
+			args: args{
+				str:          "Hell\ro- \nYiu!",
+				targetStrArr: []string{"\r", "\n", "Hello- "},
+			},
+			want: "Yiu!",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := GetDeleteTargetStr(tt.args.str, tt.args.targetStrArr...); got != tt.want {
+				t.Errorf("GetDeleteTargetStr() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

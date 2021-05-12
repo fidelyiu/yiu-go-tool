@@ -86,3 +86,11 @@ func trimWithoutTarget(
 		}
 	}
 }
+
+// GetDeleteTargetStr 获取字符串删除指定字符串后的结果，按序删除，不同顺序可能会影响删除结果，不改变原字符串
+func GetDeleteTargetStr(str string, targetStrArr ...string) string {
+	for _, v := range targetStrArr {
+		str = strings.ReplaceAll(str, v, "")
+	}
+	return str
+}

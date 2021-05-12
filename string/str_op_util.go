@@ -29,3 +29,11 @@ func TrimRightWithoutTarget(str *string, targetStrArr ...string) {
 	}
 	*str = GetTrimRightWithoutTarget(*str, targetStrArr...)
 }
+
+// DeleteTargetStr 获取字符串删除指定字符串后的结果，按序删除，不同顺序可能会影响删除结果
+func DeleteTargetStr(str *string, targetStrArr ...string) {
+	if str == nil {
+		return
+	}
+	*str = GetDeleteTargetStr(*str, targetStrArr...)
+}
