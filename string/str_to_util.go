@@ -48,6 +48,11 @@ func ToStrListByNumber(str string, indexArr ...int) []string {
 	return outList
 }
 
+// ToByteList 将字符串转换为切片
+//
+// "Hello Yiu!" >> ['H', 'e', 'l', 'l', 'o', ' ', 'Y', 'i', 'u', '!']
+//
+// "" >> []
 func ToByteList(str string) []byte {
 	return []byte(str)
 }

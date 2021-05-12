@@ -56,3 +56,36 @@ func TestToStrListByNumber(t *testing.T) {
 		})
 	}
 }
+
+func TestToByteList(t *testing.T) {
+	type args struct {
+		str string
+	}
+	tests := []struct {
+		name string
+		args args
+		want []byte
+	}{
+		{
+			name: "正常测试",
+			args: args{
+				str: "Hello Yiu!",
+			},
+			want: []byte{'H', 'e', 'l', 'l', 'o', ' ', 'Y', 'i', 'u', '!'},
+		},
+		{
+			name: "空测试",
+			args: args{
+				str: "",
+			},
+			want: []byte{},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := ToByteList(tt.args.str); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("ToByteList() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
