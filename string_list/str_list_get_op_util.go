@@ -37,8 +37,8 @@ func GetFilter(list []string, keep func(x string) bool) []string {
 	return slice.FilterString(list, keep)
 }
 
-// Copy 拷贝一个切片
-func Copy(list []string) []string {
+// GetCopy 拷贝一个切片
+func GetCopy(list []string) []string {
 	return slice.CopyString(list)
 }
 
