@@ -1,6 +1,9 @@
 package YiuStrUtil
 
-import YiuError "github.com/fidelyiu/yiu-go/error"
+import (
+	YiuError "github.com/fidelyiu/yiu-go/error"
+	"strings"
+)
 
 // GetFirstByte 获取字符串的第一个Byte，空字符串报错
 //
@@ -44,4 +47,25 @@ func GetLastByte(str string) (byte, error) {
 func GetLastByteNoErr(str string) byte {
 	result, _ := GetLastByte(str)
 	return result
+}
+
+// GetTrimWithoutTarget 获取去除两边指定字符串后的字符串，不修改原字符串
+//
+// "  --1Hello Yiu!+ " > [" ", "--", "+", "1"] > "Hello Yiu!"
+//
+// "Hello Yiu!Hello Yiu!" > ["Hello", "--", "+", "!"] > " Yiu!Hello Yiu"
+//
+// " \n\r\n Hello Yiu!  \n\r\n  " > ["\n", "\r", " "] > "Hello Yiu!"
+func GetTrimWithoutTarget(str string, targetStrArr ...string) string {
+	for {
+		strLength := len(str)
+		changeLength := 0
+		for _, v := range targetStrArr {
+			str = strings.Trim(str, v)
+			changeLength = len(str)
+		}
+		if strLength == changeLength {
+			return str
+		}
+	}
 }

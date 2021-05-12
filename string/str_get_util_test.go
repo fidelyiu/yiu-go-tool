@@ -83,3 +83,47 @@ func TestGetLastByte(t *testing.T) {
 		})
 	}
 }
+
+func TestGetTrimWithoutTarget(t *testing.T) {
+	type args struct {
+		str          string
+		targetStrArr []string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "正常测试1",
+			args: args{
+				str:          "  --1Hello Yiu!+ ",
+				targetStrArr: []string{" ", "--", "+", "1"},
+			},
+			want: "Hello Yiu!",
+		},
+		{
+			name: "正常测试2",
+			args: args{
+				str:          "Hello Yiu!Hello Yiu!",
+				targetStrArr: []string{"Hello", "--", "+", "!"},
+			},
+			want: " Yiu!Hello Yiu",
+		},
+		{
+			name: "正常测试3",
+			args: args{
+				str:          " \n\r\n Hello Yiu!  \n\r\n  ",
+				targetStrArr: []string{"\n", "\r", " "},
+			},
+			want: "Hello Yiu!",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := GetTrimWithoutTarget(tt.args.str, tt.args.targetStrArr...); got != tt.want {
+				t.Errorf("GetTrimWithoutTarget() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
