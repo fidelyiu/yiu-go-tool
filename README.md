@@ -4,5 +4,5 @@
 
 ## 安装
 ```bash
-go get -u gitee.com/kuxiaoxin/yiu-go
+go get -u github.com/fidelyiu/yiu-go
 ```
