@@ -89,3 +89,55 @@ func TestToByteList(t *testing.T) {
 		})
 	}
 }
+
+func TestToStrList(t *testing.T) {
+	type args struct {
+		str string
+		sep string
+	}
+	tests := []struct {
+		name string
+		args args
+		want []string
+	}{
+		{
+			name: "普通测试",
+			args: args{
+				str: "Hope you are happy every day!",
+				sep: " ",
+			},
+			want: []string{"Hope", "you", "are", "happy", "every", "day!"},
+		},
+		{
+			name: "头部切割",
+			args: args{
+				str: "Hope you are happy every day!",
+				sep: "H",
+			},
+			want: []string{"", "ope you are happy every day!"},
+		},
+		{
+			name: "尾部切割",
+			args: args{
+				str: "Hope you are happy every day!",
+				sep: "!",
+			},
+			want: []string{"Hope you are happy every day", ""},
+		},
+		{
+			name: "空切割",
+			args: args{
+				str: "Hello Yiu!",
+				sep: "",
+			},
+			want: []string{"H", "e", "l", "l", "o", " ", "Y", "i", "u", "!"},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := ToStrList(tt.args.str, tt.args.sep); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("ToStrList() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

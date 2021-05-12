@@ -15,6 +15,14 @@ func ToInt(str string) int {
 }
 
 // ToStrList 字符串通过指定字符 sep 分割成切片
+//
+// "Hope you are happy every day!" > " " > ["Hope", "you", "are", "happy", "every", "day!"]
+//
+// "Hope you are happy every day!" > "H" > ["", "ope you are happy every day!"]
+//
+// "Hope you are happy every day!" > "!" > ["Hope you are happy every day", ""]
+//
+// "Hello Yiu!" > "" > ["H", "e", "l", "l", "o", " ", "Y", "i", "u", "!"]
 func ToStrList(str, sep string) []string {
 	return strings.Split(str, sep)
 }
