@@ -1,6 +1,9 @@
 package YiuStr
 
-import "strings"
+import (
+	YiuByte "github.com/fidelyiu/yiu-go/byte"
+	"strings"
+)
 
 // IsEmpty 判断是否为空，空格不为空
 //
@@ -52,4 +55,32 @@ func IsLetter(str string) bool {
 // IsNotLetter 判断是否不是字母a-zA-Z，如果不是字母返回true
 func IsNotLetter(str string) bool {
 	return !IsLetter(str)
+}
+
+// IsStartWithLetterByte 是否以字母Byte开头
+func IsStartWithLetterByte(str string) bool {
+	b, err := GetFirstByte(str)
+	if err != nil {
+		return false
+	}
+	return YiuByte.IsLetter(b)
+}
+
+// IsEndWithLetterByte 是否以字母Byte结尾
+func IsEndWithLetterByte(str string) bool {
+	b, err := GetLastByte(str)
+	if err != nil {
+		return false
+	}
+	return YiuByte.IsLetter(b)
+}
+
+// IsStartWithLetterRune 是否以字母Rune开头
+func IsStartWithLetterRune(str string) bool {
+	return IsLetter(GetFirstRuneStr(str))
+}
+
+// IsEndWithLetterRune 是否以字母Rune结尾
+func IsEndWithLetterRune(str string) bool {
+	return IsLetter(GetLastRuneStr(str))
 }

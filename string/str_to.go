@@ -65,7 +65,7 @@ func ToByteList(str string) []byte {
 	return []byte(str)
 }
 
-// ToRuneList 返回Unicode代码点切片
+// ToRuneList 返回Unicode代码点切片，即可以包含汉字
 func ToRuneList(str string) []rune {
 	return []rune(str)
 }

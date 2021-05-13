@@ -267,3 +267,43 @@ func TestGetStrByRuneIndex(t *testing.T) {
 		})
 	}
 }
+
+func TestGetLastRuneStr(t *testing.T) {
+	type args struct {
+		str string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "测试1",
+			args: args{
+				str: "你好",
+			},
+			want: "好",
+		},
+		{
+			name: "测试2",
+			args: args{
+				str: "Hello",
+			},
+			want: "o",
+		},
+		{
+			name: "测试3",
+			args: args{
+				str: "",
+			},
+			want: "",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := GetLastRuneStr(tt.args.str); got != tt.want {
+				t.Errorf("GetLastRuneStr() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

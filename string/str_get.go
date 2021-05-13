@@ -146,3 +146,27 @@ func GetStrByRuneIndex(str string, i int) (string, error) {
 	}
 	return string(runeList[i]), nil
 }
+
+// GetFirstRuneStr 获取第一个Rune字符串
+// "你好" >> "你"
+// "" >> ""
+// "Hello" >> "H"
+func GetFirstRuneStr(str string) string {
+	if str == "" {
+		return ""
+	}
+	list := ToRuneList(str)
+	return string(list[0])
+}
+
+// GetLastRuneStr 获取最后一个Rune字符串
+// "你好" >> "好"
+// "" >> ""
+// "Hello" >> "o"
+func GetLastRuneStr(str string) string {
+	if str == "" {
+		return ""
+	}
+	list := ToRuneList(str)
+	return string(list[len(list)-1])
+}
