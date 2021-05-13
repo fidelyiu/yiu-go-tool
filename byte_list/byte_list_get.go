@@ -206,3 +206,22 @@ func GetElByIndex(list []byte, index int) byte {
 	}
 	return list[index]
 }
+
+// GetMergeList 获取多个子切片按序合并后的总切片
+// 如果传入的切片都是空的或nil，则返返回一个nil
+func GetMergeList(bListArr ...[]byte) []byte {
+	outLength := 0
+	for _, v := range bListArr {
+		outLength += len(v)
+	}
+	if outLength == 0 {
+		return nil
+	}
+	outList := make([]byte, outLength, outLength)
+	mergeIndex := 0
+	for _, v := range bListArr {
+		copy(outList[mergeIndex:mergeIndex+len(v)], v)
+		mergeIndex += len(v)
+	}
+	return outList
+}

@@ -1,6 +1,7 @@
 package YiuByteList
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 )
@@ -257,6 +258,46 @@ func TestGetIndexAndSubByListMore(t *testing.T) {
 			}
 			if !reflect.DeepEqual(subList, tt.wantSubList) {
 				t.Errorf("GetIndexAndSubByListMore() got1 = %v, want %v", subList, tt.wantSubList)
+			}
+		})
+	}
+}
+
+func TestCA(t *testing.T) {
+	numSlice1 := []int{11, 12, 13}
+	numSlice2 := make([]int, 6, 6)
+	copy(numSlice2[3:6], numSlice1)
+	copy(numSlice2[2:3], numSlice1)
+	copy(numSlice2[0:0], numSlice1)
+	fmt.Println(numSlice2)
+}
+
+func TestGetMergeList(t *testing.T) {
+	type args struct {
+		bListArr [][]byte
+	}
+	tests := []struct {
+		name string
+		args args
+		want []byte
+	}{
+		{
+			name: "正常测试",
+			args: args{
+				bListArr: [][]byte{
+					{},
+					{'a', 'b', 'c'},
+					{'d', 'e'},
+					{},
+				},
+			},
+			want: []byte{'a', 'b', 'c', 'd', 'e'},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := GetMergeList(tt.args.bListArr...); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("GetMergeList() = %v, want %v", got, tt.want)
 			}
 		})
 	}
