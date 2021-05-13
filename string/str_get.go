@@ -129,3 +129,20 @@ func GetDeleteTargetStr(str string, targetStrArr ...string) string {
 	}
 	return str
 }
+
+// GetStrByRuneIndex 根据rune长度获取字符串中的字符串
+// "你好呀，Hello Yiu!" > 2 > "呀", nil
+//
+// "" > 2 > "", YiuError.ErrStrEmpty
+//
+// "1" > 20 > "呀", YiuError.ErrIndexOutOfBound
+func GetStrByRuneIndex(str string, i int) (string, error) {
+	runeList := ToRuneList(str)
+	if len(runeList) == 0 {
+		return "", YiuError.ErrStrEmpty
+	}
+	if i < 0 || i > len(runeList) {
+		return "", YiuError.ErrIndexOutOfBound
+	}
+	return string(runeList[i]), nil
+}

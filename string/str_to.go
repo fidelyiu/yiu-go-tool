@@ -64,3 +64,8 @@ func ToStrListByNumber(str string, indexArr ...int) []string {
 func ToByteList(str string) []byte {
 	return []byte(str)
 }
+
+// ToRuneList 返回Unicode代码点切片
+func ToRuneList(str string) []rune {
+	return []rune(str)
+}

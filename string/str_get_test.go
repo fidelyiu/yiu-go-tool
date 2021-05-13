@@ -214,3 +214,56 @@ func TestGetIndexAndSubByStrMore(t *testing.T) {
 		})
 	}
 }
+
+func TestGetStrByRuneIndex(t *testing.T) {
+	type args struct {
+		str string
+		i   int
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{
+			name: "测试1",
+			args: args{
+				str: "你好呀，Hello Yiu!",
+				i:   2,
+			},
+			want:    "呀",
+			wantErr: false,
+		},
+		{
+			name: "空测试",
+			args: args{
+				str: "",
+				i:   2,
+			},
+			want:    "",
+			wantErr: true,
+		},
+		{
+			name: "越界测试",
+			args: args{
+				str: "1",
+				i:   20,
+			},
+			want:    "",
+			wantErr: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := GetStrByRuneIndex(tt.args.str, tt.args.i)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("GetStrByRuneIndex() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("GetStrByRuneIndex() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
