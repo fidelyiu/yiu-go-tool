@@ -1,6 +1,9 @@
 package YiuByteList
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestGetIndexByEl(t *testing.T) {
 	type args struct {
@@ -201,6 +204,59 @@ func TestGetIndexByListMore(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := GetIndexByListMore(tt.args.list, tt.args.subListArr...); got != tt.want {
 				t.Errorf("GetIndexByListMore() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestGetIndexAndSubByListMore(t *testing.T) {
+	type args struct {
+		list       []byte
+		subListArr [][]byte
+	}
+	tests := []struct {
+		name        string
+		args        args
+		wantIndex   int
+		wantSubList []byte
+	}{
+		{
+			name: "正常测试1",
+			args: args{
+				list: []byte{'a', 'b', 'c', 'd', 'e', 'f', 'g'},
+				subListArr: [][]byte{
+					{},
+					{'b', 'c'},
+					{'b', 'c', 'd'},
+					{'e', 'f', 'g'},
+				},
+			},
+			wantIndex:   1,
+			wantSubList: []byte{'b', 'c'},
+		},
+		{
+			name: "正常测试2",
+			args: args{
+				list: []byte{'a', 'b', 'c', 'd', 'e', 'f', 'g'},
+				subListArr: [][]byte{
+					{},
+					{'b', 'c', 'd'},
+					{'b', 'c'},
+					{'e', 'f', 'g'},
+				},
+			},
+			wantIndex:   1,
+			wantSubList: []byte{'b', 'c', 'd'},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, subList := GetIndexAndSubByListMore(tt.args.list, tt.args.subListArr...)
+			if got != tt.wantIndex {
+				t.Errorf("GetIndexAndSubByListMore() got = %v, want %v", got, tt.wantIndex)
+			}
+			if !reflect.DeepEqual(subList, tt.wantSubList) {
+				t.Errorf("GetIndexAndSubByListMore() got1 = %v, want %v", subList, tt.wantSubList)
 			}
 		})
 	}

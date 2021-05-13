@@ -171,3 +171,46 @@ func TestGetDeleteTargetStr(t *testing.T) {
 		})
 	}
 }
+
+func TestGetIndexAndSubByStrMore(t *testing.T) {
+	type args struct {
+		str        string
+		subListArr []string
+	}
+	tests := []struct {
+		name       string
+		args       args
+		wantIndex  int
+		wantSubStr string
+	}{
+		{
+			name: "正常测试",
+			args: args{
+				str:        "Hello Yiu!",
+				subListArr: []string{"ell", "Yiu", "ello", ""},
+			},
+			wantIndex:  1,
+			wantSubStr: "ell",
+		},
+		{
+			name: "空测试",
+			args: args{
+				str:        "",
+				subListArr: []string{"ell", "Yiu", "ello", ""},
+			},
+			wantIndex:  -1,
+			wantSubStr: "",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, subStr := GetIndexAndSubByStrMore(tt.args.str, tt.args.subListArr...)
+			if got != tt.wantIndex {
+				t.Errorf("GetIndexAndSubByStrMore() got = %v, want %v", got, tt.wantIndex)
+			}
+			if subStr != tt.wantSubStr {
+				t.Errorf("GetIndexAndSubByStrMore() got1 = %v, want %v", subStr, tt.wantSubStr)
+			}
+		})
+	}
+}

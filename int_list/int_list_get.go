@@ -176,6 +176,33 @@ func GetIndexByListMore(list []int, subListArr ...[]int) int {
 	return min
 }
 
+// GetIndexAndSubByListMore 从多个子切片中获取索引，返回最小的有效索引，如果都不满足则返回-1
+// 方法最终返回该索引和对应子切片，
+// 传参的子切片顺序会影响结果，如果两个子切片处于相同位置，返回参数中排在前面的
+// 空、nil子切片不参与过滤
+//
+// [1, 2, 3, 4, 5, 6, 7] > [{},{2, 3},{2, 3, 4},{5, 6, 7}] > 1, [2, 3]
+func GetIndexAndSubByListMore(list []int, subListArr ...[]int) (int, []int) {
+	subListIndex := make([]int, len(subListArr), len(subListArr))
+	for i, v := range subListArr {
+		subListIndex[i] = GetIndexByList(list, v)
+	}
+	minNotInvalidIndex := -1
+	minIndexNumber := -1
+	for i, v := range subListIndex {
+		if v != -1 {
+			if minIndexNumber == -1 || minIndexNumber < v {
+				minNotInvalidIndex = i
+				minIndexNumber = v
+			}
+		}
+	}
+	if minNotInvalidIndex != -1 {
+		return minIndexNumber, subListArr[minNotInvalidIndex]
+	}
+	return -1, nil
+}
+
 // GetElByIndex 根据索引获取元素，如果数组、索引违规，则返回""
 // 如果需要报错的，请直接使用 list[i]
 func GetElByIndex(list []int, index int) int {

@@ -182,3 +182,39 @@ func TestGetIndexByList(t *testing.T) {
 		})
 	}
 }
+
+func TestGetIndexAndSubByListMore(t *testing.T) {
+	type args struct {
+		list       []string
+		subListArr [][]string
+	}
+	tests := []struct {
+		name        string
+		args        args
+		wantIndex   int
+		wantSubList []string
+	}{
+		{
+			name: "正常测试",
+			args: args{
+				list: []string{"a", "b", "c", "d", "e", "f", "g"},
+				subListArr: [][]string{
+					{}, {"b", "c"}, {"b", "c", "d"}, {"e", "f", "g"},
+				},
+			},
+			wantIndex:   1,
+			wantSubList: []string{"b", "c"},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, subList := GetIndexAndSubByListMore(tt.args.list, tt.args.subListArr...)
+			if got != tt.wantIndex {
+				t.Errorf("GetIndexAndSubByListMore() got = %v, want %v", got, tt.wantIndex)
+			}
+			if !reflect.DeepEqual(subList, tt.wantSubList) {
+				t.Errorf("GetIndexAndSubByListMore() got1 = %v, want %v", subList, tt.wantSubList)
+			}
+		})
+	}
+}
