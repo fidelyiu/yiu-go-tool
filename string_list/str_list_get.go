@@ -219,9 +219,9 @@ func GetElByIndex(list []string, index int) string {
 
 // GetMergeList 获取多个子切片按序合并后的总切片
 // 如果传入的切片都是空的或nil，则返返回一个nil
-func GetMergeList(bListArr ...[]string) []string {
+func GetMergeList(sListArr ...[]string) []string {
 	outLength := 0
-	for _, v := range bListArr {
+	for _, v := range sListArr {
 		outLength += len(v)
 	}
 	if outLength == 0 {
@@ -229,7 +229,7 @@ func GetMergeList(bListArr ...[]string) []string {
 	}
 	outList := make([]string, outLength, outLength)
 	mergeIndex := 0
-	for _, v := range bListArr {
+	for _, v := range sListArr {
 		copy(outList[mergeIndex:mergeIndex+len(v)], v)
 		mergeIndex += len(v)
 	}
