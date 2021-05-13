@@ -1,4 +1,4 @@
-package YiuStrUtil
+package YiuStr
 
 import (
 	YiuError "github.com/fidelyiu/yiu-go/error"

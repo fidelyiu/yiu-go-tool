@@ -1,4 +1,4 @@
-package YiuStrUtil
+package YiuStr
 
 // OpTrimWithoutTarget 获取去除两边指定字符串后的字符串
 //

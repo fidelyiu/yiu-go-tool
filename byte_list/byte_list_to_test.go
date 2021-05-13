@@ -1,4 +1,4 @@
-package YiuByteListUtil
+package YiuByteList
 
 import "testing"
 

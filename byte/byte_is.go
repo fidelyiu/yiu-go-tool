@@ -1,4 +1,4 @@
-package YiuByteUtil
+package YiuByte
 
 // IsLetter 判断是否是字母a-zA-Z，如果是字母返回true
 func IsLetter(b byte) bool {

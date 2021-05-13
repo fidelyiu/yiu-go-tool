@@ -1,4 +1,4 @@
-package YiuLoggerUtil
+package YiuLogger
 
 import "fmt"
 

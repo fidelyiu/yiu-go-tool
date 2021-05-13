@@ -1,4 +1,4 @@
-package YiuByteListUtil
+package YiuByteList
 
 // ToStr 按照分隔符将切片输出
 //

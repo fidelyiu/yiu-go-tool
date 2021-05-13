@@ -1,4 +1,4 @@
-package YiuStrListUtil
+package YiuStrList
 
 import (
 	"reflect"

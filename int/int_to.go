@@ -1,4 +1,4 @@
-package YiuIntUtil
+package YiuInt
 
 import "strconv"
 
