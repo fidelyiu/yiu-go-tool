@@ -1,9 +1,11 @@
-package YiuByteList
+package YiuIntList
 
-import YiuError "github.com/fidelyiu/yiu-go/error"
+import (
+	YiuError "github.com/fidelyiu/yiu-go/error"
+)
 
-// OpDeduplicate 获取去重切片
-func OpDeduplicate(list *[]byte) {
+// OpDeduplicate 去重，按顺序保留
+func OpDeduplicate(list *[]int) {
 	if list == nil {
 		return
 	}
@@ -11,26 +13,26 @@ func OpDeduplicate(list *[]byte) {
 }
 
 // OpDeleteByIndex 根据索引删除，超出索引不处理
-func OpDeleteByIndex(list *[]byte, delIndex int) {
+func OpDeleteByIndex(list *[]int, delIndex int) {
 	if list == nil {
 		return
 	}
 	*list = GetDeleteByIndex(*list, delIndex)
 }
 
-// OpDeleteByRangeIndex 根据范围索引删除
+// OpDeleteByRangeIndex 根据范围索引删除，
 // 索引超出无效，
 // startIndex > endIndex 无效，
 // 负值索引无效
-func OpDeleteByRangeIndex(list *[]byte, startIndex, endIndex int) {
+func OpDeleteByRangeIndex(list *[]int, startIndex, endIndex int) {
 	if list == nil {
 		return
 	}
 	*list = GetDeleteByRangeIndex(*list, startIndex, endIndex)
 }
 
-// OpFilter 过滤切片元素，保留返回ture的
-func OpFilter(list *[]byte, keep func(x byte) bool) {
+// OpFilter 过滤切片，保留返回ture的
+func OpFilter(list *[]int, keep func(int) bool) {
 	if list == nil {
 		return
 	}
@@ -38,7 +40,7 @@ func OpFilter(list *[]byte, keep func(x byte) bool) {
 }
 
 // OpPop 切片元素出栈，nil、空切片都会报错
-func OpPop(list *[]byte) (byte, error) {
+func OpPop(list *[]int) (int, error) {
 	if list == nil {
 		return 0, YiuError.ErrAddrNil
 	}
@@ -50,8 +52,8 @@ func OpPop(list *[]byte) (byte, error) {
 	return pop, nil
 }
 
-// OpReverse 切片元素顺序反转
-func OpReverse(list *[]byte) {
+// OpReverse 切片元素反转
+func OpReverse(list *[]int) {
 	if list == nil {
 		return
 	}
@@ -59,15 +61,15 @@ func OpReverse(list *[]byte) {
 }
 
 // OpShuffle 切片元素乱序排列
-func OpShuffle(list *[]byte) {
+func OpShuffle(list *[]int) {
 	if list == nil {
 		return
 	}
 	*list = GetShuffle(*list)
 }
 
-// OpMap 获取遍历计算后的切片，不改变原切片
-func OpMap(list *[]byte, opFunc func(int, byte) byte) {
+// OpMap 遍历计算切片，修改原切片
+func OpMap(list *[]int, opFunc func(int, int) int) {
 	if list == nil {
 		return
 	}

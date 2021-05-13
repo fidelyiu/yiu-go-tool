@@ -173,3 +173,35 @@ func TestGetElByIndex(t *testing.T) {
 		})
 	}
 }
+
+func TestGetIndexByListMore(t *testing.T) {
+	type args struct {
+		list       []byte
+		subListArr [][]byte
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{
+			name: "正常测试",
+			args: args{
+				list: []byte{'a', 'b', 'c', 'd', 'e', 'f', 'g'},
+				subListArr: [][]byte{
+					{'b', 'c'},
+					{},
+					{'d', 'e'},
+				},
+			},
+			want: 1,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := GetIndexByListMore(tt.args.list, tt.args.subListArr...); got != tt.want {
+				t.Errorf("GetIndexByListMore() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

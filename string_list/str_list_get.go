@@ -2,6 +2,7 @@ package YiuStrList
 
 import (
 	YiuError "github.com/fidelyiu/yiu-go/error"
+	YiuIntList "github.com/fidelyiu/yiu-go/int_list"
 	YiuStrUtil "github.com/fidelyiu/yiu-go/string"
 	"github.com/psampaz/slice"
 )
@@ -37,7 +38,7 @@ func GetCopy(list []string) []string {
 	return slice.CopyString(list)
 }
 
-// GetFilter 过滤切片元素，不改变原切片
+// GetFilter 过滤切片元素，保留返回ture的，不改变原切片
 func GetFilter(list []string, keep func(x string) bool) []string {
 	return slice.FilterString(list, keep)
 }
@@ -159,6 +160,25 @@ func GetIndexByList(list []string, subList []string) int {
 		}
 	}
 	return -1
+}
+
+// GetIndexByListMore 从多个子切片中获取索引，返回最小的有效索引，如果都不满足则返回-1
+// 空、nil子切片不参与过滤
+//
+// ["a", "b", "c", "d", "e", "f", "g"] > [{"b", "c"},{},{"d", "e"}] > 1
+func GetIndexByListMore(list []string, subListArr ...[]string) int {
+	subListIndex := make([]int, len(subListArr), len(subListArr))
+	for i, v := range subListArr {
+		subListIndex[i] = GetIndexByList(list, v)
+	}
+	YiuIntList.OpFilter(&subListIndex, func(i int) bool {
+		return i != -1
+	})
+	min, err := YiuIntList.GetMin(subListIndex)
+	if err != nil {
+		return -1
+	}
+	return min
 }
 
 // GetElByIndex 根据索引获取元素，如果数组、索引违规，则返回""

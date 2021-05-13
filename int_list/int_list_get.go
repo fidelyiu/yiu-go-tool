@@ -1,20 +1,18 @@
-package YiuByteList
+package YiuIntList
 
 import (
-	"bytes"
 	YiuError "github.com/fidelyiu/yiu-go/error"
-	YiuIntList "github.com/fidelyiu/yiu-go/int_list"
 	"github.com/psampaz/slice"
 )
 
 // GetDeduplicate 获取去重切片，不改变原切片
-func GetDeduplicate(list []byte) []byte {
-	return slice.DeduplicateByte(list)
+func GetDeduplicate(list []int) []int {
+	return slice.DeduplicateInt(list)
 }
 
 // GetDeleteByIndex 根据索引删除，不改变原切片，超出索引不处理
-func GetDeleteByIndex(list []byte, delIndex int) []byte {
-	result, err := slice.DeleteByte(list, delIndex)
+func GetDeleteByIndex(list []int, delIndex int) []int {
+	result, err := slice.DeleteInt(list, delIndex)
 	if err != nil {
 		return list
 	}
@@ -25,8 +23,8 @@ func GetDeleteByIndex(list []byte, delIndex int) []byte {
 // 索引超出无效，
 // startIndex > endIndex 无效，
 // 负值索引无效
-func GetDeleteByRangeIndex(list []byte, startIndex, endIndex int) []byte {
-	result, err := slice.DeleteRangeByte(list, startIndex, endIndex)
+func GetDeleteByRangeIndex(list []int, startIndex, endIndex int) []int {
+	result, err := slice.DeleteRangeInt(list, startIndex, endIndex)
 	if err != nil {
 		return list
 	}
@@ -34,18 +32,18 @@ func GetDeleteByRangeIndex(list []byte, startIndex, endIndex int) []byte {
 }
 
 // GetCopy 拷贝一个切片
-func GetCopy(list []byte) []byte {
-	return slice.CopyByte(list)
+func GetCopy(list []int) []int {
+	return slice.CopyInt(list)
 }
 
 // GetFilter 过滤切片元素，保留返回ture的，不改变原切片
-func GetFilter(list []byte, keep func(x byte) bool) []byte {
-	return slice.FilterByte(list, keep)
+func GetFilter(list []int, keep func(x int) bool) []int {
+	return slice.FilterInt(list, keep)
 }
 
 // GetMax 获取切片中最大的byte，nil、空切片都会报错
-func GetMax(list []byte) (byte, error) {
-	maxByte, err := slice.MaxByte(list)
+func GetMax(list []int) (int, error) {
+	maxByte, err := slice.MaxInt(list)
 	if err != nil {
 		return 0, YiuError.ErrListInvalid
 	}
@@ -53,8 +51,8 @@ func GetMax(list []byte) (byte, error) {
 }
 
 // GetMin 获取切片中最小的byte，nil、空切片都会报错
-func GetMin(list []byte) (byte, error) {
-	minByte, err := slice.MinByte(list)
+func GetMin(list []int) (int, error) {
+	minByte, err := slice.MinInt(list)
 	if err != nil {
 		return 0, YiuError.ErrListInvalid
 	}
@@ -62,39 +60,39 @@ func GetMin(list []byte) (byte, error) {
 }
 
 // GetPop 切片元素出栈，不改变原切片，nil、空切片都会报错
-func GetPop(list []byte) (byte, []byte, error) {
-	popByte, i, err := slice.PopByte(list)
+func GetPop(list []int) (int, []int, error) {
+	popString, i, err := slice.PopInt(list)
 	if err != nil {
 		return 0, nil, YiuError.ErrListInvalid
 	}
-	return popByte, i, err
+	return popString, i, err
 }
 
 // GetReverse 切片元素顺序反转，不改变原切片
-func GetReverse(list []byte) []byte {
-	return slice.ReverseByte(list)
+func GetReverse(list []int) []int {
+	return slice.ReverseInt(list)
 }
 
 // GetShuffle 切片元素乱序排列，不改变原切片
-func GetShuffle(list []byte) []byte {
-	return slice.ShuffleByte(list)
+func GetShuffle(list []int) []int {
+	return slice.ShuffleInt(list)
 }
 
-// GetSum 所有byte值算术相加，nil、空切片返回0
-func GetSum(list []byte) byte {
-	sumByte, err := slice.SumByte(list)
+// GetSum 所有int值算术相加，nil、空切片返回0
+func GetSum(list []int) int {
+	sumInt, err := slice.SumInt(list)
 	if err != nil {
 		return 0
 	}
-	return sumByte
+	return sumInt
 }
 
 // GetMap 获取遍历计算后的切片，不改变原切片
-func GetMap(list []byte, opFunc func(int, byte) byte) []byte {
+func GetMap(list []int, opFunc func(int, int) int) []int {
 	if IsInvalid(list) {
 		return list
 	}
-	outList := make([]byte, len(list), len(list))
+	outList := make([]int, len(list), len(list))
 	for i, v := range list {
 		outList[i] = opFunc(i, v)
 	}
@@ -102,30 +100,37 @@ func GetMap(list []byte, opFunc func(int, byte) byte) []byte {
 }
 
 // GetIndexByEl 获取元素索引，如果没有该元素则返回-1
-func GetIndexByEl(list []byte, el byte) int {
-	return bytes.IndexByte(list, el)
+func GetIndexByEl(list []int, el int) int {
+	if IsInvalid(list) {
+		return -1
+	}
+	for i, v := range list {
+		if v == el {
+			return i
+		}
+	}
+	return -1
 }
 
 // GetIndexByList 获取子切片的索引值，如果没有该子切片则返回-1，
 // 如果两个切片存在一个是空或nil都将返回-1（返回0，使用0去取值可能会报错）
-// 要子切片为空或nil返回0的直接使用 bytes.Index
 //
-// ['a', 'b', 'c', 'd'] > ['b', 'c'] > 1
+// [1, 2, 3, 4] > [2, 3] > 1
 //
-// ['a', 'b', 'c', 'd'] > ['y', 'c'] > -1
+// [1, 2, 3, 4] > [5, 3] > -1
 //
-// [] > ['y', 'c'] > -1
+// [] > [2, 3] > -1
 //
-// nil > ['y', 'c'] > -1
+// nil > [2, 3] > -1
 //
-// ['a', 'b', 'c', 'd'] > [] > -1
+// [1, 2] > [] > -1
 //
-// ['a', 'b', 'c', 'd'] > nil > -1
+// [1, 2] > nil > -1
 //
 // [] > [] > -1
 //
 // nil > nil > -1
-func GetIndexByList(list []byte, subList []byte) int {
+func GetIndexByList(list []int, subList []int) int {
 	if IsInvalid(list) {
 		return -1
 	}
@@ -155,25 +160,25 @@ func GetIndexByList(list []byte, subList []byte) int {
 // GetIndexByListMore 从多个子切片中获取索引，返回最小的有效索引，如果都不满足则返回-1
 // 空、nil子切片不参与过滤
 //
-// ['a', 'b', 'c', 'd', 'e', 'f', 'g'] > [{'b', 'c'},{},{'d', 'e'}] > 1
-func GetIndexByListMore(list []byte, subListArr ...[]byte) int {
+// [1, 2, 3, 4, 5, 6, 7] > [{2, 3},{},{5, 6}] > 1
+func GetIndexByListMore(list []int, subListArr ...[]int) int {
 	subListIndex := make([]int, len(subListArr), len(subListArr))
 	for i, v := range subListArr {
 		subListIndex[i] = GetIndexByList(list, v)
 	}
-	YiuIntList.OpFilter(&subListIndex, func(i int) bool {
+	OpFilter(&subListIndex, func(i int) bool {
 		return i != -1
 	})
-	min, err := YiuIntList.GetMin(subListIndex)
+	min, err := GetMin(subListIndex)
 	if err != nil {
 		return -1
 	}
 	return min
 }
 
-// GetElByIndex 根据索引获取元素，如果数组、索引违规，则返回0
+// GetElByIndex 根据索引获取元素，如果数组、索引违规，则返回""
 // 如果需要报错的，请直接使用 list[i]
-func GetElByIndex(list []byte, index int) byte {
+func GetElByIndex(list []int, index int) int {
 	if IsInvalid(list) || index < 0 || index >= len(list) {
 		return 0
 	}

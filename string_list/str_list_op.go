@@ -29,7 +29,7 @@ func OpDeleteByRangeIndex(list *[]string, startIndex, endIndex int) {
 	*list = GetDeleteByRangeIndex(*list, startIndex, endIndex)
 }
 
-// OpFilter 过滤切片
+// OpFilter 过滤切片，保留返回ture的
 func OpFilter(list *[]string, keep func(x string) bool) {
 	if list == nil {
 		return
