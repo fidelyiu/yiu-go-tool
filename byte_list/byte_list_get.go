@@ -150,3 +150,12 @@ func GetIndexByList(list []byte, subList []byte) int {
 	}
 	return -1
 }
+
+// GetElByIndex 根据索引获取元素，如果数组、索引违规，则返回0
+// 如果需要报错的，请直接使用 list[i]
+func GetElByIndex(list []byte, index int) byte {
+	if IsInvalid(list) || index < 0 || index >= len(list) {
+		return 0
+	}
+	return list[index]
+}

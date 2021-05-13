@@ -160,3 +160,12 @@ func GetIndexByList(list []string, subList []string) int {
 	}
 	return -1
 }
+
+// GetElByIndex 根据索引获取元素，如果数组、索引违规，则返回""
+// 如果需要报错的，请直接使用 list[i]
+func GetElByIndex(list []string, index int) string {
+	if IsInvalid(list) || index < 0 || index >= len(list) {
+		return ""
+	}
+	return list[index]
+}

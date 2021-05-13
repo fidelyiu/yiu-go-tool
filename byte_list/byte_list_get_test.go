@@ -129,3 +129,47 @@ func TestGetIndexByList(t *testing.T) {
 		})
 	}
 }
+
+func TestGetElByIndex(t *testing.T) {
+	type args struct {
+		list  []byte
+		index int
+	}
+	tests := []struct {
+		name string
+		args args
+		want byte
+	}{
+		{
+			name: "正常测试",
+			args: args{
+				list:  []byte{'a', 'b', 'c', 'd'},
+				index: 1,
+			},
+			want: 'b',
+		},
+		{
+			name: "负值测试",
+			args: args{
+				list:  []byte{'a', 'b', 'c', 'd'},
+				index: -1,
+			},
+			want: 0,
+		},
+		{
+			name: "超索引测试",
+			args: args{
+				list:  []byte{'a', 'b', 'c', 'd'},
+				index: 4,
+			},
+			want: 0,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := GetElByIndex(tt.args.list, tt.args.index); got != tt.want {
+				t.Errorf("GetElByIndex() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
