@@ -32,14 +32,14 @@ func GetDeleteByRangeIndex(list []string, startIndex, endIndex int) []string {
 	return result
 }
 
-// GetFilter 过滤切片元素，不改变原切片
-func GetFilter(list []string, keep func(x string) bool) []string {
-	return slice.FilterString(list, keep)
-}
-
 // GetCopy 拷贝一个切片
 func GetCopy(list []string) []string {
 	return slice.CopyString(list)
+}
+
+// GetFilter 过滤切片元素，不改变原切片
+func GetFilter(list []string, keep func(x string) bool) []string {
+	return slice.FilterString(list, keep)
 }
 
 // GetPop 切片元素出栈，不改变原切片，nil、空切片都会报错
@@ -101,4 +101,62 @@ func GetDeleteBlankEl(list []string) []string {
 	return GetFilter(list, func(x string) bool {
 		return !YiuStrUtil.IsBlank(x)
 	})
+}
+
+// GetIndexByEl 获取元素索引，如果没有该元素则返回-1
+func GetIndexByEl(list []string, el string) int {
+	if IsInvalid(list) {
+		return -1
+	}
+	for i, v := range list {
+		if v == el {
+			return i
+		}
+	}
+	return -1
+}
+
+// GetIndexByList 获取子切片的索引值，如果没有该子切片则返回-1，
+// 如果两个切片存在一个是空或nil都将返回-1（返回0，使用0去取值可能会报错）
+//
+// ["a", "b", "c", "d"] > ["b", "c"] > 1
+//
+// ["a", "b", "c", "d"] > ["y", "c"] > -1
+//
+// [] > ["y", "c"] > -1
+//
+// nil > ["y", "c"] > -1
+//
+// ["a", "b"] > [] > -1
+//
+// ["a", "b"] > nil > -1
+//
+// [] > [] > -1
+//
+// nil > nil > -1
+func GetIndexByList(list []string, subList []string) int {
+	if IsInvalid(list) {
+		return -1
+	}
+	n := len(subList)
+	switch {
+	case n == 0:
+		return -1
+	case n == 1:
+		return GetIndexByEl(list, subList[0])
+	case n == len(list):
+		if IsEqual(list, subList) {
+			return 0
+		} else {
+			return -1
+		}
+	case n > len(list):
+		return -1
+	}
+	for i := 0; i < len(list)-n; i++ {
+		if IsEqual(list[i:i+n], subList) {
+			return i
+		}
+	}
+	return -1
 }
