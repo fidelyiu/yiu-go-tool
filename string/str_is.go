@@ -84,3 +84,41 @@ func IsStartWithLetterRune(str string) bool {
 func IsEndWithLetterRune(str string) bool {
 	return IsLetter(GetLastRuneStr(str))
 }
+
+// IsTure 判读字符串是否是true
+//
+// "TRUE" >> true
+//
+// "True" >> true
+//
+// "TrUe" >> true
+//
+// "true" >> true
+//
+// "1" >> true
+//
+// "anyStr" >> false
+//
+// "not1" >> false
+func IsTure(str string) bool {
+	return strings.ToLower(str) == strings.ToLower("true") || str == "1"
+}
+
+// IsFalse 判读字符串是否是false，结果和 IsTure 相反
+//
+// "TRUE" >> false
+//
+// "True" >> false
+//
+// "TrUe" >> false
+//
+// "true" >> false
+//
+// "1" >> false
+//
+// "anyStr" >> true
+//
+// "not1" >> true
+func IsFalse(str string) bool {
+	return !IsTure(str)
+}
