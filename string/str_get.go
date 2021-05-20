@@ -170,3 +170,13 @@ func GetLastRuneStr(str string) string {
 	list := ToRuneList(str)
 	return string(list[len(list)-1])
 }
+
+// GetTureStr 获取 true 的字符串
+func GetTureStr() string {
+	return "true"
+}
+
+// GetFalseStr 获取 false 的字符串
+func GetFalseStr() string {
+	return "false"
+}
