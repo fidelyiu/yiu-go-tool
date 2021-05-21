@@ -1,9 +1,9 @@
 package YiuStrList
 
 import (
-	YiuError "github.com/fidelyiu/yiu-go/error"
 	YiuIntList "github.com/fidelyiu/yiu-go/int_list"
 	YiuStrUtil "github.com/fidelyiu/yiu-go/string"
+	YiuBaseError "github.com/fidelyiu/yiu-go/yiu_error"
 	"github.com/psampaz/slice"
 )
 
@@ -47,7 +47,7 @@ func GetFilter(list []string, keep func(x string) bool) []string {
 func GetPop(list []string) (string, []string, error) {
 	popString, i, err := slice.PopString(list)
 	if err != nil {
-		return "", nil, YiuError.ErrListInvalid
+		return "", nil, YiuBaseError.ErrListInvalid
 	}
 	return popString, i, err
 }

@@ -1,7 +1,7 @@
 package YiuIntList
 
 import (
-	YiuError "github.com/fidelyiu/yiu-go/error"
+	YiuBaseError "github.com/fidelyiu/yiu-go/yiu_error"
 )
 
 // OpDeduplicate 去重，按顺序保留
@@ -42,7 +42,7 @@ func OpFilter(list *[]int, keep func(int) bool) {
 // OpPop 切片元素出栈，nil、空切片都会报错
 func OpPop(list *[]int) (int, error) {
 	if list == nil {
-		return 0, YiuError.ErrAddrNil
+		return 0, YiuBaseError.ErrAddrNil
 	}
 	pop, tempList, err := GetPop(*list)
 	if err != nil {

@@ -1,7 +1,7 @@
 package YiuStr
 
 import (
-	YiuError "github.com/fidelyiu/yiu-go/error"
+	YiuBaseError "github.com/fidelyiu/yiu-go/yiu_error"
 	"strings"
 )
 
@@ -12,7 +12,7 @@ import (
 // "" >> ' ', YiuError.ErrStrEmpty
 func GetFirstByte(str string) (byte, error) {
 	if str == "" {
-		return ' ', YiuError.ErrStrEmpty
+		return ' ', YiuBaseError.ErrStrEmpty
 	}
 	return ToByteList(str)[0], nil
 }
@@ -34,7 +34,7 @@ func GetFirstByteNoErr(str string) byte {
 // "" >> ' ', YiuError.ErrStrEmpty
 func GetLastByte(str string) (byte, error) {
 	if str == "" {
-		return ' ', YiuError.ErrStrEmpty
+		return ' ', YiuBaseError.ErrStrEmpty
 	}
 	return ToByteList(str)[len(str)-1], nil
 }
@@ -139,10 +139,10 @@ func GetDeleteTargetStr(str string, targetStrArr ...string) string {
 func GetStrByRuneIndex(str string, i int) (string, error) {
 	runeList := ToRuneList(str)
 	if len(runeList) == 0 {
-		return "", YiuError.ErrStrEmpty
+		return "", YiuBaseError.ErrStrEmpty
 	}
 	if i < 0 || i > len(runeList) {
-		return "", YiuError.ErrIndexOutOfBound
+		return "", YiuBaseError.ErrIndexOutOfBound
 	}
 	return string(runeList[i]), nil
 }

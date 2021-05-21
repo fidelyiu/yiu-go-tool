@@ -1,4 +1,4 @@
-package YiuError
+package YiuBaseError
 
 import "errors"
 

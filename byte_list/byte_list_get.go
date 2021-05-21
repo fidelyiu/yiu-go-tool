@@ -2,8 +2,8 @@ package YiuByteList
 
 import (
 	"bytes"
-	YiuError "github.com/fidelyiu/yiu-go/error"
 	YiuIntList "github.com/fidelyiu/yiu-go/int_list"
+	YiuBaseError "github.com/fidelyiu/yiu-go/yiu_error"
 	"github.com/psampaz/slice"
 )
 
@@ -47,7 +47,7 @@ func GetFilter(list []byte, keep func(x byte) bool) []byte {
 func GetMax(list []byte) (byte, error) {
 	maxByte, err := slice.MaxByte(list)
 	if err != nil {
-		return 0, YiuError.ErrListInvalid
+		return 0, YiuBaseError.ErrListInvalid
 	}
 	return maxByte, nil
 }
@@ -56,7 +56,7 @@ func GetMax(list []byte) (byte, error) {
 func GetMin(list []byte) (byte, error) {
 	minByte, err := slice.MinByte(list)
 	if err != nil {
-		return 0, YiuError.ErrListInvalid
+		return 0, YiuBaseError.ErrListInvalid
 	}
 	return minByte, nil
 }
@@ -65,7 +65,7 @@ func GetMin(list []byte) (byte, error) {
 func GetPop(list []byte) (byte, []byte, error) {
 	popByte, i, err := slice.PopByte(list)
 	if err != nil {
-		return 0, nil, YiuError.ErrListInvalid
+		return 0, nil, YiuBaseError.ErrListInvalid
 	}
 	return popByte, i, err
 }

@@ -11,7 +11,7 @@ go get -u github.com/fidelyiu/yiu-go
 
 如 goproxy.cn 更新失败，尝试指定版本
 ```bash
-go get github.com/fidelyiu/yiu-go@v1.0.19
+go get github.com/fidelyiu/yiu-go@v1.0.20
 ```
 
 
@@ -41,14 +41,19 @@ Yiu[t].[o]FuncName(...)
 
 ### 4.2.数据类型[t]
 
-| 数据类型                 | 工具包名      |
-| ------------------------ | ------------- |
-| `byte`                   | `YiuByte`     |
-| `byte_slice`/`byte_list` | `YiuByteList` |
-| `int`                    | `YiuInt`      |
-| `int_slice`/`int_list`   | `YiuIntList`  |
-| `string`                 | `YiuStr`      |
-| `byte_slice`/`byte_list` | `YiuStrList`  |
+| 数据类型                 | 工具包名       |
+| ------------------------ | -------------- |
+| `bool`                   | `YiuBool`      |
+| `byte`                   | `YiuByte`      |
+| `byte_slice`/`byte_list` | `YiuByteList`  |
+| `dir`                    | `YiuDir`       |
+| `error_slice/error_list` | `YiuErrorList` |
+| `file`                   | `YiuFile`      |
+| `int`                    | `YiuInt`       |
+| `int_slice`/`int_list`   | `YiuIntList`   |
+| `string`                 | `YiuStr`       |
+| `byte_slice`/`byte_list` | `YiuStrList`   |
+| `time`                   | `YiuTime`      |
 
 
 

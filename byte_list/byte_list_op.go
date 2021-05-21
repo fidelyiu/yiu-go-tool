@@ -1,6 +1,6 @@
 package YiuByteList
 
-import YiuError "github.com/fidelyiu/yiu-go/error"
+import YiuBaseError "github.com/fidelyiu/yiu-go/yiu_error"
 
 // OpDeduplicate 获取去重切片
 func OpDeduplicate(list *[]byte) {
@@ -40,7 +40,7 @@ func OpFilter(list *[]byte, keep func(x byte) bool) {
 // OpPop 切片元素出栈，nil、空切片都会报错
 func OpPop(list *[]byte) (byte, error) {
 	if list == nil {
-		return 0, YiuError.ErrAddrNil
+		return 0, YiuBaseError.ErrAddrNil
 	}
 	pop, tempList, err := GetPop(*list)
 	if err != nil {

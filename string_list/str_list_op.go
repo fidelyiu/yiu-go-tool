@@ -1,6 +1,6 @@
 package YiuStrList
 
-import YiuError "github.com/fidelyiu/yiu-go/error"
+import YiuBaseError "github.com/fidelyiu/yiu-go/yiu_error"
 
 // OpDeduplicate 去重，按顺序保留
 func OpDeduplicate(list *[]string) {
@@ -40,7 +40,7 @@ func OpFilter(list *[]string, keep func(x string) bool) {
 // OpPop 切片元素出栈，nil、空切片都会报错
 func OpPop(list *[]string) (string, error) {
 	if list == nil {
-		return "", YiuError.ErrAddrNil
+		return "", YiuBaseError.ErrAddrNil
 	}
 	pop, tempList, err := GetPop(*list)
 	if err != nil {

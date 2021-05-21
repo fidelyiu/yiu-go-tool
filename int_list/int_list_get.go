@@ -1,7 +1,7 @@
 package YiuIntList
 
 import (
-	YiuError "github.com/fidelyiu/yiu-go/error"
+	YiuBaseError "github.com/fidelyiu/yiu-go/yiu_error"
 	"github.com/psampaz/slice"
 )
 
@@ -45,7 +45,7 @@ func GetFilter(list []int, keep func(x int) bool) []int {
 func GetMax(list []int) (int, error) {
 	maxByte, err := slice.MaxInt(list)
 	if err != nil {
-		return 0, YiuError.ErrListInvalid
+		return 0, YiuBaseError.ErrListInvalid
 	}
 	return maxByte, nil
 }
@@ -54,7 +54,7 @@ func GetMax(list []int) (int, error) {
 func GetMin(list []int) (int, error) {
 	minByte, err := slice.MinInt(list)
 	if err != nil {
-		return 0, YiuError.ErrListInvalid
+		return 0, YiuBaseError.ErrListInvalid
 	}
 	return minByte, nil
 }
@@ -63,7 +63,7 @@ func GetMin(list []int) (int, error) {
 func GetPop(list []int) (int, []int, error) {
 	popString, i, err := slice.PopInt(list)
 	if err != nil {
-		return 0, nil, YiuError.ErrListInvalid
+		return 0, nil, YiuBaseError.ErrListInvalid
 	}
 	return popString, i, err
 }
