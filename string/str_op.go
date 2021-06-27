@@ -1,5 +1,10 @@
 package YiuStr
 
+import (
+	"os"
+	"strings"
+)
+
 // OpTrimWithoutTarget 获取去除两边指定字符串后的字符串
 //
 // "  --1Hello Yiu!+ " > [" ", "--", "+", "1"] > "Hello Yiu!"
@@ -36,4 +41,10 @@ func OpDeleteTargetStr(str *string, targetStrArr ...string) {
 		return
 	}
 	*str = GetDeleteTargetStr(*str, targetStrArr...)
+}
+
+// OpFormatPathSeparator 格式化字符串中的文件分隔符为当前系统的文件分隔符
+func OpFormatPathSeparator(str *string) {
+	strings.ReplaceAll(*str, "/", string(os.PathSeparator))
+	strings.ReplaceAll(*str, "\\", string(os.PathSeparator))
 }
