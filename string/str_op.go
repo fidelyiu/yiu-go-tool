@@ -45,6 +45,6 @@ func OpDeleteTargetStr(str *string, targetStrArr ...string) {
 
 // OpFormatPathSeparator 格式化字符串中的文件分隔符为当前系统的文件分隔符
 func OpFormatPathSeparator(str *string) {
-	strings.ReplaceAll(*str, "/", string(os.PathSeparator))
-	strings.ReplaceAll(*str, "\\", string(os.PathSeparator))
+	*str = strings.ReplaceAll(*str, "/", string(os.PathSeparator))
+	*str = strings.ReplaceAll(*str, "\\", string(os.PathSeparator))
 }
