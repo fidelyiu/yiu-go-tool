@@ -11,7 +11,7 @@ go get -u github.com/fidelyiu/yiu-go
 
 如 goproxy.cn 更新失败，尝试指定版本
 ```bash
-go get github.com/fidelyiu/yiu-go@v1.0.24
+go get github.com/fidelyiu/yiu-go@v1.0.25
 ```
 
 
@@ -49,6 +49,7 @@ Yiu[t].[o]FuncName(...)
 | `bool`                   | `YiuBool`      |
 | `byte`                   | `YiuByte`      |
 | `byte_slice`/`byte_list` | `YiuByteList`  |
+| `error`                  | `YiuError`     |
 | `error_slice/error_list` | `YiuErrorList` |
 | `int`                    | `YiuInt`       |
 | `int_slice`/`int_list`   | `YiuIntList`   |

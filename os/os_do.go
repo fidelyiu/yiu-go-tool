@@ -2,6 +2,7 @@ package YiuOs
 
 import (
 	"bytes"
+	YiuError "github.com/fidelyiu/yiu-go/error"
 	"os/exec"
 )
 
@@ -78,16 +79,48 @@ func DoRunCmdPipe(cList []*exec.Cmd) error {
 	return err
 }
 
-type cmdStr struct {
+type CmdStr struct {
 	name string
 	arg  []string
 }
 
 // DoCommandWithPipe 自动组装cmd，按顺序加管道执行命令
-func DoCommandWithPipe(cmdStrList []cmdStr) error {
+func DoCommandWithPipe(cmdStrList []CmdStr) error {
 	var cList []*exec.Cmd
 	for i := range cmdStrList {
 		cList = append(cList, GetCmd(cmdStrList[i].name, cmdStrList[i].arg...))
 	}
 	return DoRunCmdPipe(cList)
+}
+
+// DoOpenFileManager 调用系统的文件管理器
+func DoOpenFileManager(path string) error {
+	if IsTypeWindows() {
+		err := DoCommand("cmd", "/C", "explorer "+path)
+		if err != nil {
+			if YiuError.IsExitStatus1(err) {
+				err = nil
+			}
+		}
+		return err
+	} else if IsTypeDarwin() {
+		// Mac
+		err := DoCommand("bash", "-c", "open "+path)
+		if err != nil {
+			if YiuError.IsExitStatus1(err) {
+				err = nil
+			}
+		}
+		return err
+	} else if IsTypeLinux() {
+		// Linux
+		err := DoCommand("bash", "-c", "nautilus "+path)
+		if err != nil {
+			if YiuError.IsExitStatus1(err) {
+				err = nil
+			}
+		}
+		return err
+	}
+	return nil
 }
