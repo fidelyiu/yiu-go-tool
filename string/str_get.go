@@ -180,3 +180,8 @@ func GetTureStr() string {
 func GetFalseStr() string {
 	return "false"
 }
+
+// GetDelEndRNStr 获取去除结尾的\r\n
+func GetDelEndRNStr(str string) string {
+	return strings.TrimRight(str, "\r\n")
+}

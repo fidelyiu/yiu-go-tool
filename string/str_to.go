@@ -1,6 +1,8 @@
 package YiuStr
 
 import (
+	YiuStrList "github.com/fidelyiu/yiu-go/string_list"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -25,6 +27,40 @@ func ToInt(str string) int {
 // "Hello Yiu!" > "" > ["H", "e", "l", "l", "o", " ", "Y", "i", "u", "!"]
 func ToStrList(str, sep string) []string {
 	return strings.Split(str, sep)
+}
+
+// ToStrListBySepList 字符串通过多个字符 sep 分割成切片
+// 该分割将去除结果中所有的空字符串
+func ToStrListBySepList(str string, sepList ...string) []string {
+	// 如果原字符串为空则直接返回
+	if str == "" {
+		return []string{}
+	}
+	result := []string{str}
+	// 如果有空分隔符就全部分割
+	if YiuStrList.IsContainsEl(sepList, "") {
+		return ToStrList(str, "")
+	}
+	// 去重
+	YiuStrList.OpDeduplicate(&sepList)
+	// 从最小字符
+	sort.Slice(sepList, func(i, j int) bool {
+		return len(sepList[i]) < len(sepList[j])
+	})
+	for i1 := range sepList {
+		var tempResult []string
+		for i2 := range result {
+			tempResult = append(tempResult, ToStrList(result[i2], sepList[i1])...)
+		}
+		result = tempResult
+	}
+	return result
+}
+
+// ToStrListBySepListWithoutEmpty 字符串通过多个字符 sep 分割成切片
+// 该分割会将结果中所有的空字符串删除
+func ToStrListBySepListWithoutEmpty(str string, sepList ...string) []string {
+	return YiuStrList.GetDeleteEmptyEl(ToStrListBySepList(str, sepList...))
 }
 
 // ToStrListByNumber 将字符串按照数字切割，每一个数字代表输出的位数

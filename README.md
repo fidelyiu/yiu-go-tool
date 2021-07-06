@@ -44,42 +44,51 @@ Yiu[t].[o]FuncName(...)
 
 基本类型：
 
-| 对象类型                 | 工具包名       |
-| ------------------------ | -------------- |
-| `bool`                   | `YiuBool`      |
-| `byte`                   | `YiuByte`      |
-| `byte_slice`/`byte_list` | `YiuByteList`  |
-| `error`                  | `YiuError`     |
-| `error_slice/error_list` | `YiuErrorList` |
-| `int`                    | `YiuInt`       |
-| `int_slice`/`int_list`   | `YiuIntList`   |
-| `string`                 | `YiuStr`       |
-| `byte_slice`/`byte_list` | `YiuStrList`   |
-| `time`                   | `YiuTime`      |
+| 对象类型                     | 工具包名       | 说明                                   |
+| ---------------------------- | -------------- | -------------------------------------- |
+| `bool`                       | `YiuBool`      | `bool`值                               |
+| `byte`                       | `YiuByte`      | 字节                                   |
+| `byte_slice`/`byte_list`     | `YiuByteList`  | 字节`List`                             |
+| `error`                      | `YiuError`     | 错误                                   |
+| `error_slice/error_list`     | `YiuErrorList` | 错误`List`                             |
+| `int`                        | `YiuInt`       | `int`整型                              |
+| `int_slice`/`int_list`       | `YiuIntList`   | `int`整型`List`                        |
+| `string`                     | `YiuStr`       | 字符串                                 |
+| `...string`                  | `YiuSStr`      | 多个字符串，方法的参数一般为可变长度。 |
+| `string_slice`/`string_list` | `YiuStrList`   | 字符串`List`                           |
+| `time`                       | `YiuTime`      | 时间                                   |
 
 
 
 特殊类型：
 
-| 对象类型    | 工具包名  |
-| ----------- | --------- |
-| `file` 文件 | `YiuFile` |
-| `dir` 目录  | `YiuDir`  |
-| `os` 系统   | `YiuOs`   |
+| 对象类型 | 工具包名  | 说明 |
+| -------- | --------- | ---- |
+| `file`   | `YiuFile` | 文件 |
+| `dir`    | `YiuDir`  | 目录 |
+| `os`     | `YiuOs`   | 系统 |
 
 
 
 ### 4.3.操作[o]
 
-| 操作                   | 方法前缀 |
-| ---------------------- | -------- |
-| 数据是否具有某种特性   | `Is...`  |
-| 从数据中得到，但不修改 | `Get...` |
-| 操作并修改数据         | `Op...`  |
-| 将数据转换至其他类型   | `To...`  |
-| 执行一些操作           | `Do...`  |
+| 方法前缀 | 操作                                                 |
+| -------- | ---------------------------------------------------- |
+| `Is...`  | 数据是否具有某种特性                                 |
+| `Get...` | 从数据中得到，但不修改，一般不做计算                 |
+| `To...`  | 将数据转换至其他类型，或做一些简单的计算             |
+| `STo...` | 多个该类型的`To`操作，一般这种方法的参数为可变长度。 |
+| `Op...`  | 操作并修改数据                                       |
+| `Do...`  | 执行一些操作                                         |
 
 
+
+> `Get`和`To`意思上不一样，需要稍微了解了解。
+>
+> - `Get`：后面一般接`形容词`+`类型`，比如`YiuStr.GetFirstByte`
+> - `To`：后面一般接`类型`+`By`+`计算方式`，比如`YiuStr.ToStrList`
+>
+> 如果实在不行就两个里面都找一找。
 
 
 
