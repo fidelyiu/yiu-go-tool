@@ -11,15 +11,16 @@ go get -u github.com/fidelyiu/yiu-go
 
 如 goproxy.cn 更新失败，尝试指定版本
 ```bash
-go get github.com/fidelyiu/yiu-go@v1.0.23
+go get github.com/fidelyiu/yiu-go@v1.0.24
 ```
 
 
 
 ## 3.使用
 
-你正在操作数据的类型：`[t]`
+你正在操作对象的类型：`[t]`
 你想对该数据的操作：`[o]`
+
 ```
 Yiu[t].[o]FuncName(...)
 ```
@@ -39,16 +40,16 @@ Yiu[t].[o]FuncName(...)
 
 
 
-### 4.2.数据类型[t]
+### 4.2.对象类型[t]
 
-| 数据类型                 | 工具包名       |
+基本类型：
+
+| 对象类型                 | 工具包名       |
 | ------------------------ | -------------- |
 | `bool`                   | `YiuBool`      |
 | `byte`                   | `YiuByte`      |
 | `byte_slice`/`byte_list` | `YiuByteList`  |
-| `dir`                    | `YiuDir`       |
 | `error_slice/error_list` | `YiuErrorList` |
-| `file`                   | `YiuFile`      |
 | `int`                    | `YiuInt`       |
 | `int_slice`/`int_list`   | `YiuIntList`   |
 | `string`                 | `YiuStr`       |
@@ -56,6 +57,14 @@ Yiu[t].[o]FuncName(...)
 | `time`                   | `YiuTime`      |
 
 
+
+特殊类型：
+
+| 对象类型    | 工具包名  |
+| ----------- | --------- |
+| `file` 文件 | `YiuFile` |
+| `dir` 目录  | `YiuDir`  |
+| `os` 系统   | `YiuOs`   |
 
 
 
@@ -67,6 +76,7 @@ Yiu[t].[o]FuncName(...)
 | 从数据中得到，但不修改 | `Get...` |
 | 操作并修改数据         | `Op...`  |
 | 将数据转换至其他类型   | `To...`  |
+| 执行一些操作           | `Do...`  |
 
 
 
