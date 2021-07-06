@@ -2,7 +2,7 @@ package YiuStrList
 
 import (
 	"fmt"
-	YiuIntUtil "github.com/fidelyiu/yiu-go/int"
+	YiuInt "github.com/fidelyiu/yiu-go/int"
 	"testing"
 )
 
@@ -20,7 +20,7 @@ func TestOpMap(t *testing.T) {
 			args: args{
 				list: &[]string{"Hello", "Fidel", "Yiu"},
 				opFunc: func(i int, s string) string {
-					return s + "(" + YiuIntUtil.ToStr(i) + ")"
+					return s + "(" + YiuInt.ToStr(i) + ")"
 				},
 			},
 		},
@@ -29,7 +29,7 @@ func TestOpMap(t *testing.T) {
 			args: args{
 				list: &[]string{},
 				opFunc: func(i int, s string) string {
-					return s + "(" + YiuIntUtil.ToStr(i) + ")"
+					return s + "(" + YiuInt.ToStr(i) + ")"
 				},
 			},
 		},
@@ -38,7 +38,7 @@ func TestOpMap(t *testing.T) {
 			args: args{
 				list: nil,
 				opFunc: func(i int, s string) string {
-					return s + "(" + YiuIntUtil.ToStr(i) + ")"
+					return s + "(" + YiuInt.ToStr(i) + ")"
 				},
 			},
 		},

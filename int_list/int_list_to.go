@@ -1,6 +1,6 @@
 package YiuIntList
 
-import YiuIntUtil "github.com/fidelyiu/yiu-go/int"
+import YiuInt "github.com/fidelyiu/yiu-go/int"
 
 // ToStr 按照分隔符将切片输出
 //
@@ -19,14 +19,14 @@ func ToStr(list []int, sep string) string {
 		return ""
 	}
 	if len(list) == 1 {
-		return YiuIntUtil.ToStr(list[0])
+		return YiuInt.ToStr(list[0])
 	}
 	for i, v := range list {
 		if i == 0 {
-			outStr += YiuIntUtil.ToStr(v)
+			outStr += YiuInt.ToStr(v)
 			continue
 		}
-		outStr += sep + YiuIntUtil.ToStr(v)
+		outStr += sep + YiuInt.ToStr(v)
 	}
 	return outStr
 }

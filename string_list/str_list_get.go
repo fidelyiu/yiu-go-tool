@@ -2,7 +2,7 @@ package YiuStrList
 
 import (
 	YiuIntList "github.com/fidelyiu/yiu-go/int_list"
-	YiuStrUtil "github.com/fidelyiu/yiu-go/string"
+	YiuStr "github.com/fidelyiu/yiu-go/string"
 	YiuBaseError "github.com/fidelyiu/yiu-go/yiu_error"
 	"github.com/psampaz/slice"
 )
@@ -85,7 +85,7 @@ func GetMap(list []string, opFunc func(int, string) string) []string {
 // nil >> nil
 func GetDeleteEmptyEl(list []string) []string {
 	return GetFilter(list, func(x string) bool {
-		return !YiuStrUtil.IsEmpty(x)
+		return !YiuStr.IsEmpty(x)
 	})
 }
 
@@ -100,7 +100,7 @@ func GetDeleteEmptyEl(list []string) []string {
 // nil >> nil
 func GetDeleteBlankEl(list []string) []string {
 	return GetFilter(list, func(x string) bool {
-		return !YiuStrUtil.IsBlank(x)
+		return !YiuStr.IsBlank(x)
 	})
 }
 
