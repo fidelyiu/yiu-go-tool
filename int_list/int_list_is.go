@@ -1,10 +1,10 @@
-package YiuIntList
+package yiuIntList
 
-import "github.com/psampaz/slice"
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
 
 // IsContainsEl 判断切片是否包含某byte
 func IsContainsEl(list []int, b int) bool {
-	return slice.ContainsInt(list, b)
+	return yiuAll.YiuIntListIsContainsEl(list, b)
 }
 
 // IsContainsElList 判断切片是否包含子切片
@@ -26,40 +26,20 @@ func IsContainsEl(list []int, b int) bool {
 //
 // nil > nil > false
 func IsContainsElList(list, subList []int) bool {
-	if GetIndexByList(list, subList) == -1 {
-		return false
-	} else {
-		return true
-	}
-}
-
-// IsInvalid 判断切片为nil或长度为0
-func IsInvalid(list []int) bool {
-	return IsNil(list) || IsEmpty(list)
-}
-
-// IsNil 判断切片是否为nil
-func IsNil(list []int) bool {
-	return list == nil
+	return yiuAll.YiuIntListIsContainsElList(list, subList)
 }
 
 // IsEmpty 判断切片长度是否等于0
 func IsEmpty(list []int) bool {
-	return len(list) == 0
+	return yiuAll.YiuIntListIsEmpty(list)
 }
 
 // IsEqual 判断两个数组是否相等
 func IsEqual(listA, listB []int) bool {
-	if (listA == nil) != (listB == nil) {
-		return false
-	}
-	if len(listA) != len(listB) {
-		return false
-	}
-	for i := range listA {
-		if listA[i] != listB[i] {
-			return false
-		}
-	}
-	return true
+	return yiuAll.YiuIntListIsEqual(listA, listB)
+}
+
+// IsNil 判断切片是否为nil
+func IsNil(list []int) bool {
+	return yiuAll.YiuIntListIsNil(list)
 }

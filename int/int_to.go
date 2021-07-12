@@ -1,8 +1,8 @@
-package YiuInt
+package yiuInt
 
-import "strconv"
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
 
 // ToStr 将int转换成字符串
 func ToStr(num int) string {
-	return strconv.Itoa(num)
+	return yiuAll.YiuIntToStr(num)
 }

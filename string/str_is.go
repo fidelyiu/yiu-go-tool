@@ -1,27 +1,6 @@
-package YiuStr
+package yiuStr
 
-import (
-	YiuByte "github.com/fidelyiu/yiu-go/byte"
-	"strings"
-)
-
-// IsEmpty 判断是否为空，空格不为空
-//
-// ""    >> true
-//
-// "   " >> false
-func IsEmpty(str string) bool {
-	return str == ""
-}
-
-// IsNotEmpty 判断是否不为空
-//
-// ""    >> false
-//
-// "   " >> true
-func IsNotEmpty(str string) bool {
-	return !IsEmpty(str)
-}
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
 
 // IsBlank 判断是否全是空格或者空
 //
@@ -29,79 +8,36 @@ func IsNotEmpty(str string) bool {
 //
 // "   " >> true
 func IsBlank(str string) bool {
-	return strings.TrimSpace(str) == ""
+	return yiuAll.YiuStrIsBlank(str)
 }
 
-// IsNotBlank 判断是否全部非空格或者空
-func IsNotBlank(str string) bool {
-	return !IsBlank(str)
+// IsContainsAnyByte 是否包含对比串的任意Byte
+func IsContainsAnyByte(s, chars string) bool {
+	return yiuAll.YiuStrIsContainsAnyByte(s, chars)
 }
 
-// IsLetter 判断是否是字母a-zA-Z，如果是字母返回true
+// IsContainsAnyRune 是否包含对比串的任意Rune
+func IsContainsAnyRune(s, chars string) bool {
+	return yiuAll.YiuStrIsContainsAnyRune(s, chars)
+}
+
+// IsEmpty 判断是否为空，空格不为空
 //
-// "" >> false
+// ""    >> true
 //
-// "A" >> true
-//
-// "你" >> false
-func IsLetter(str string) bool {
-	if len(str) != 1 {
-		return false
-	}
-	b := ToByteList(str)[0]
-	return (65 <= b && b <= 90) || (97 <= b && b <= 122)
-}
-
-// IsNotLetter 判断是否不是字母a-zA-Z，如果不是字母返回true
-func IsNotLetter(str string) bool {
-	return !IsLetter(str)
-}
-
-// IsStartWithLetterByte 是否以字母Byte开头
-func IsStartWithLetterByte(str string) bool {
-	b, err := GetFirstByte(str)
-	if err != nil {
-		return false
-	}
-	return YiuByte.IsLetter(b)
+// "   " >> false
+func IsEmpty(str string) bool {
+	return yiuAll.YiuStrIsEmpty(str)
 }
 
 // IsEndWithLetterByte 是否以字母Byte结尾
 func IsEndWithLetterByte(str string) bool {
-	b, err := GetLastByte(str)
-	if err != nil {
-		return false
-	}
-	return YiuByte.IsLetter(b)
-}
-
-// IsStartWithLetterRune 是否以字母Rune开头
-func IsStartWithLetterRune(str string) bool {
-	return IsLetter(GetFirstRuneStr(str))
+	return yiuAll.YiuStrIsEndWithLetterByte(str)
 }
 
 // IsEndWithLetterRune 是否以字母Rune结尾
 func IsEndWithLetterRune(str string) bool {
-	return IsLetter(GetLastRuneStr(str))
-}
-
-// IsTure 判读字符串是否是true
-//
-// "TRUE" >> true
-//
-// "True" >> true
-//
-// "TrUe" >> true
-//
-// "true" >> true
-//
-// "1" >> true
-//
-// "anyStr" >> false
-//
-// "not1" >> false
-func IsTure(str string) bool {
-	return strings.ToLower(str) == strings.ToLower("true") || str == "1"
+	return yiuAll.YiuStrIsEndWithLetterRune(str)
 }
 
 // IsFalse 判读字符串是否是false，结果和 IsTure 相反
@@ -120,5 +56,72 @@ func IsTure(str string) bool {
 //
 // "not1" >> true
 func IsFalse(str string) bool {
-	return !IsTure(str)
+	return yiuAll.YiuStrIsFalse(str)
+}
+
+// IsLetter 判断是否是字母a-zA-Z，如果是字母返回true
+//
+// "" >> false
+//
+// "A" >> true
+//
+// "你" >> false
+func IsLetter(str string) bool {
+	return yiuAll.YiuStrIsLetter(str)
+}
+
+func IsLowerLetter(str string) bool {
+	return yiuAll.YiuStrIsLowerLetter(str)
+}
+
+// IsNotBlank 判断是否全部非空格或者空
+func IsNotBlank(str string) bool {
+	return yiuAll.YiuStrIsNotBlank(str)
+}
+
+// IsNotEmpty 判断是否不为空
+//
+// ""    >> false
+//
+// "   " >> true
+func IsNotEmpty(str string) bool {
+	return yiuAll.YiuStrIsNotEmpty(str)
+}
+
+// IsNotLetter 判断是否不是字母a-zA-Z，如果不是字母返回true
+func IsNotLetter(str string) bool {
+	return yiuAll.YiuStrIsNotLetter(str)
+}
+
+// IsStartWithLetterByte 是否以字母Byte开头
+func IsStartWithLetterByte(str string) bool {
+	return yiuAll.YiuStrIsStartWithLetterByte(str)
+}
+
+// IsStartWithLetterRune 是否以字母Rune开头
+func IsStartWithLetterRune(str string) bool {
+	return yiuAll.YiuStrIsStartWithLetterRune(str)
+}
+
+// IsTure 判读字符串是否是true
+//
+// "TRUE" >> true
+//
+// "True" >> true
+//
+// "TrUe" >> true
+//
+// "true" >> true
+//
+// "1" >> true
+//
+// "anyStr" >> false
+//
+// "not1" >> false
+func IsTure(str string) bool {
+	return yiuAll.YiuStrIsTure(str)
+}
+
+func IsUpperLetter(str string) bool {
+	return yiuAll.YiuStrIsUpperLetter(str)
 }

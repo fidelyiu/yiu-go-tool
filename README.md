@@ -3,15 +3,19 @@
 
 
 
+如果你更熟悉`strings`、`unicodes`、`so`...这些基础的包，建议使用官方的基础包。
+
+
+
 ## 2.安装
 
 ```bash
-go get -u github.com/fidelyiu/yiu-go
+go get -u github.com/fidelyiu/yiu-go-tool
 ```
 
 如 goproxy.cn 更新失败，尝试指定版本
 ```bash
-go get github.com/fidelyiu/yiu-go@v1.0.26
+go get github.com/fidelyiu/yiu-go-tool@v1.0.1
 ```
 
 
@@ -44,29 +48,35 @@ Yiu[t].[o]FuncName(...)
 
 基本类型：
 
-| 对象类型                     | 工具包名       | 说明                                   |
-| ---------------------------- | -------------- | -------------------------------------- |
-| `bool`                       | `YiuBool`      | `bool`值                               |
-| `byte`                       | `YiuByte`      | 字节                                   |
-| `byte_slice`/`byte_list`     | `YiuByteList`  | 字节`List`                             |
-| `error`                      | `YiuError`     | 错误                                   |
-| `error_slice/error_list`     | `YiuErrorList` | 错误`List`                             |
-| `int`                        | `YiuInt`       | `int`整型                              |
-| `int_slice`/`int_list`       | `YiuIntList`   | `int`整型`List`                        |
-| `string`                     | `YiuStr`       | 字符串                                 |
-| `...string`                  | `YiuSStr`      | 多个字符串，方法的参数一般为可变长度。 |
-| `string_slice`/`string_list` | `YiuStrList`   | 字符串`List`                           |
-| `time`                       | `YiuTime`      | 时间                                   |
+| 对象类型         | 工具包名       | 说明                                         |
+| ---------------- | -------------- | -------------------------------------------- |
+| `bool`           | `yiuBool`      | `bool`值                                     |
+| `byte`           | `yiuByte`      | 字节                                         |
+| `byte_list`      | `yiuByteList`  | 字节`List`                                   |
+| `...byte_list`   | `yiuSByteList` | 多个`byteList`，方法的参数一般为可变长度。   |
+| `error`          | `yiuErr`       | 错误                                         |
+| `...error`       | `yiuSErr`      | 多个`error`，方法的参数一般为可变长度。      |
+| `int`            | `yiuInt`       | `int`整型                                    |
+| `...int`         | `ySInt`        | 多个`int`，方法的参数一般为可变长度。        |
+| `int_list`       | `yiuIntList`   | `int`整型`List`                              |
+| `...int_list`    | `yiuSIntList`  | 多个`intList`，方法的参数一般为可变长度。    |
+| `string`         | `yiuStr`       | 字符串                                       |
+| `...string`      | `yiuSStr`      | 多个字符串，方法的参数一般为可变长度。       |
+| `string_list`    | `yiuStrList`   | 字符串`List`                                 |
+| `...string_list` | `yiuSStrList`  | 多个字符串`List`，方法的参数一般为可变长度。 |
+| `rune_list`      | `yiuRuneList`  | `runeList`                                   |
+| `time`           | `yiuTime`      | 时间                                         |
 
 
 
 特殊类型：
 
-| 对象类型 | 工具包名  | 说明 |
-| -------- | --------- | ---- |
-| `file`   | `YiuFile` | 文件 |
-| `dir`    | `YiuDir`  | 目录 |
-| `os`     | `YiuOs`   | 系统 |
+| 对象类型 | 工具包名  | 说明                                      |
+| -------- | --------- | ----------------------------------------- |
+| `file`   | `yiuFile` | 文件                                      |
+| `dir`    | `yiuDir`  | 目录                                      |
+| `os`     | `yiuOs`   | 系统                                      |
+| `log`    | `yiuLog`  | 日志，<br />只是简单的改变了`fmt`的颜色。 |
 
 
 

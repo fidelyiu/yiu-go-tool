@@ -1,21 +1,33 @@
-package YiuStrList
+package yiuStrList
 
-import YiuBaseError "github.com/fidelyiu/yiu-go/yiu_error"
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
+
+// OpAscUnicode 按照Unicode逐个升序排列
+func OpAscUnicode(list *[]string) {
+	yiuAll.YiuStrListOpAscUnicode(list)
+}
 
 // OpDeduplicate 去重，按顺序保留
 func OpDeduplicate(list *[]string) {
-	if list == nil {
-		return
-	}
-	*list = GetDeduplicate(*list)
+	yiuAll.YiuStrListOpDeduplicate(list)
+}
+
+// OpDeleteBlankEl 去除所有空串和空格字符串
+//
+// ["", "Hello", "", "Yiu"] >> ["Hello", "Yiu"]
+//
+// [" ", "Hello", "", "Yiu"] >> ["Hello", "Yiu"]
+//
+// [] >> []
+//
+// nil >> nil
+func OpDeleteBlankEl(list *[]string) {
+	yiuAll.YiuStrListOpDeleteBlankEl(list)
 }
 
 // OpDeleteByIndex 根据索引删除，超出索引不处理
 func OpDeleteByIndex(list *[]string, delIndex int) {
-	if list == nil {
-		return
-	}
-	*list = GetDeleteByIndex(*list, delIndex)
+	yiuAll.YiuStrListOpDeleteByIndex(list, delIndex)
 }
 
 // OpDeleteByRangeIndex 根据范围索引删除，
@@ -23,47 +35,30 @@ func OpDeleteByIndex(list *[]string, delIndex int) {
 // startIndex > endIndex 无效，
 // 负值索引无效
 func OpDeleteByRangeIndex(list *[]string, startIndex, endIndex int) {
-	if list == nil {
-		return
-	}
-	*list = GetDeleteByRangeIndex(*list, startIndex, endIndex)
+	yiuAll.YiuStrListOpDeleteByRangeIndex(list, startIndex, endIndex)
+}
+
+// OpDeleteEmptyEl 去除所有空串
+//
+// ["", "Hello", "", "Yiu"] >> ["Hello", "Yiu"]
+//
+// [" ", "Hello", "", "Yiu"] >> [" ", "Hello", "Yiu"]
+//
+// [] >> []
+//
+// nil >> nil
+func OpDeleteEmptyEl(list *[]string) {
+	yiuAll.YiuStrListOpDeleteEmptyEl(list)
+}
+
+// OpDescUnicode 按照Unicode逐个将序排列
+func OpDescUnicode(list *[]string) {
+	yiuAll.YiuStrListOpDescUnicode(list)
 }
 
 // OpFilter 过滤切片，保留返回ture的
 func OpFilter(list *[]string, keep func(x string) bool) {
-	if list == nil {
-		return
-	}
-	*list = GetFilter(*list, keep)
-}
-
-// OpPop 切片元素出栈，nil、空切片都会报错
-func OpPop(list *[]string) (string, error) {
-	if list == nil {
-		return "", YiuBaseError.ErrAddrNil
-	}
-	pop, tempList, err := GetPop(*list)
-	if err != nil {
-		return "", err
-	}
-	*list = tempList
-	return pop, nil
-}
-
-// OpReverse 切片元素反转
-func OpReverse(list *[]string) {
-	if list == nil {
-		return
-	}
-	*list = GetReverse(*list)
-}
-
-// OpShuffle 切片元素乱序排列
-func OpShuffle(list *[]string) {
-	if list == nil {
-		return
-	}
-	*list = GetShuffle(*list)
+	yiuAll.YiuStrListOpFilter(list, keep)
 }
 
 // OpMap 遍历计算切片，修改原切片
@@ -79,40 +74,20 @@ func OpShuffle(list *[]string) {
 //
 // nil > opFunc > nil
 func OpMap(list *[]string, opFunc func(int, string) string) {
-	if list == nil {
-		return
-	}
-	*list = GetMap(*list, opFunc)
+	yiuAll.YiuStrListOpMap(list, opFunc)
 }
 
-// OpDeleteEmptyEl 去除所有空串
-//
-// ["", "Hello", "", "Yiu"] >> ["Hello", "Yiu"]
-//
-// [" ", "Hello", "", "Yiu"] >> [" ", "Hello", "Yiu"]
-//
-// [] >> []
-//
-// nil >> nil
-func OpDeleteEmptyEl(list *[]string) {
-	if list == nil {
-		return
-	}
-	*list = GetDeleteEmptyEl(*list)
+// OpPop 切片元素出栈，nil、空切片都会报错
+func OpPop(list *[]string) (string, error) {
+	return yiuAll.YiuStrListOpPop(list)
 }
 
-// OpDeleteBlankEl 去除所有空串和空格字符串
-//
-// ["", "Hello", "", "Yiu"] >> ["Hello", "Yiu"]
-//
-// [" ", "Hello", "", "Yiu"] >> ["Hello", "Yiu"]
-//
-// [] >> []
-//
-// nil >> nil
-func OpDeleteBlankEl(list *[]string) {
-	if list == nil {
-		return
-	}
-	*list = GetDeleteBlankEl(*list)
+// OpReverse 切片元素反转
+func OpReverse(list *[]string) {
+	yiuAll.YiuStrListOpReverse(list)
+}
+
+// OpShuffle 切片元素乱序排列
+func OpShuffle(list *[]string) {
+	yiuAll.YiuStrListOpShuffle(list)
 }

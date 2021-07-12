@@ -1,11 +1,23 @@
-package YiuByte
+package yiuByte
 
-// IsLetter 判断是否是字母a-zA-Z，如果是字母返回true
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
+
+// IsLetter 判断是否是字母`a-zA-Z`，如果是返回`true`
 func IsLetter(b byte) bool {
-	return (65 <= b && b <= 90) || (97 <= b && b <= 122)
+	return yiuAll.YiuByteIsLetter(b)
 }
 
-// IsNotLetter 判断是否不是字母a-zA-Z，如果不是字母返回true
+// IsLowerLetter 判断是否是小写字母`a-z`，如果是返回`true`
+func IsLowerLetter(b byte) bool {
+	return yiuAll.YiuByteIsLowerLetter(b)
+}
+
+// IsNotLetter 判断是否不是字母`a-zA-Z`，如果不是字母返回`true`
 func IsNotLetter(b byte) bool {
-	return !IsLetter(b)
+	return yiuAll.YiuByteIsNotLetter(b)
+}
+
+// IsUpperLetter 判断是否是大写字母`A-Z`，如果是返回`true`
+func IsUpperLetter(b byte) bool {
+	return yiuAll.YiuByteIsUpperLetter(b)
 }

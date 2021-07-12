@@ -1,8 +1,13 @@
-package YiuIntList
+package yiuIntList
 
-import YiuInt "github.com/fidelyiu/yiu-go/int"
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
 
-// ToStr 按照分隔符将切片输出
+// ToStr 将所有int转成字符串并输出
+func ToStr(list []int) string {
+	return yiuAll.YiuIntListToStr(list)
+}
+
+// ToStrBySep 按照分隔符将切片输出
 //
 // [1, 2] > " " > "1 2"
 //
@@ -13,20 +18,6 @@ import YiuInt "github.com/fidelyiu/yiu-go/int"
 // [1] > "=" > "1"
 //
 // [1, 2] > "" > "12"
-func ToStr(list []int, sep string) string {
-	outStr := ""
-	if IsInvalid(list) {
-		return ""
-	}
-	if len(list) == 1 {
-		return YiuInt.ToStr(list[0])
-	}
-	for i, v := range list {
-		if i == 0 {
-			outStr += YiuInt.ToStr(v)
-			continue
-		}
-		outStr += sep + YiuInt.ToStr(v)
-	}
-	return outStr
+func ToStrBySep(list []int, sep string) string {
+	return yiuAll.YiuIntListToStrBySep(list, sep)
 }

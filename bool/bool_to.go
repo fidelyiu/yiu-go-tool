@@ -1,24 +1,13 @@
-package YiuBool
+package yiuBool
 
-import (
-	YiuInt "github.com/fidelyiu/yiu-go/int"
-	YiuStr "github.com/fidelyiu/yiu-go/string"
-)
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
 
 // ToInt bool转换成Int
 func ToInt(b bool) int {
-	if b {
-		return YiuInt.GetTrueInt()
-	} else {
-		return YiuInt.GetFalseInt()
-	}
+	return yiuAll.YiuBoolToInt(b)
 }
 
 // ToStr bool转换成string
 func ToStr(b bool) string {
-	if b {
-		return YiuStr.GetTureStr()
-	} else {
-		return YiuStr.GetFalseStr()
-	}
+	return yiuAll.YiuBoolToStr(b)
 }

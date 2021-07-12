@@ -1,4 +1,4 @@
-module github.com/fidelyiu/yiu-go
+module github.com/fidelyiu/yiu-go-tool
 
 go 1.16
 

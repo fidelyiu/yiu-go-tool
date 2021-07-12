@@ -1,6 +1,13 @@
-package YiuStrList
+package yiuStrList
 
-// ToStr 按照分隔符将切片输出
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
+
+// ToStr 将切片合并输出
+func ToStr(list []string) string {
+	return yiuAll.YiuStrListToStr(list)
+}
+
+// ToStrBySep 按照分隔符将切片输出
 //
 // ["Hello", "Yiu"] > " " > "Hello Yiu"
 //
@@ -11,20 +18,6 @@ package YiuStrList
 // ["Hello"] > "=" > "Hello"
 //
 // ["Hello", "Yiu"] > "" > "HelloYiu"
-func ToStr(list []string, sep string) string {
-	outStr := ""
-	if IsInvalid(list) {
-		return ""
-	}
-	if len(list) == 1 {
-		return list[0]
-	}
-	for i, v := range list {
-		if i == 0 {
-			outStr += v
-			continue
-		}
-		outStr += sep + v
-	}
-	return outStr
+func ToStrBySep(list []string, sep string) string {
+	return yiuAll.YiuStrListToStrBySep(list, sep)
 }

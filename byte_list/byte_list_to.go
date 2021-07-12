@@ -1,6 +1,13 @@
-package YiuByteList
+package yiuByteList
 
-// ToStr 按照分隔符将切片输出
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
+
+// ToStr 将元素合并成字符串
+func ToStr(list []byte) string {
+	return yiuAll.YiuByteListToStr(list)
+}
+
+// ToStrBySep 按照分隔符将切片输出
 //
 // ['a', 'b'] > " " > "a b"
 //
@@ -13,20 +20,6 @@ package YiuByteList
 // ['a', 'b'] > "" > "ab"
 //
 // nil > "=" > ""
-func ToStr(list []byte, sep string) string {
-	outStr := ""
-	if IsInvalid(list) {
-		return ""
-	}
-	if len(list) == 1 {
-		return string(list[0])
-	}
-	for i, v := range list {
-		if i == 0 {
-			outStr += string(v)
-			continue
-		}
-		outStr += sep + string(v)
-	}
-	return outStr
+func ToStrBySep(list []byte, sep string) string {
+	return yiuAll.YiuByteListToStrBySep(list, sep)
 }

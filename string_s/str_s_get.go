@@ -1,61 +1,56 @@
-package YiuSStr
+package yiuSStr
 
-// GetMergeStr 获取合并字符串
-// 缩写： GetM
-//
-// "a","b","c" >> "abc"
-func GetMergeStr(sList ...string) string {
-	result := ""
-	for i := range sList {
-		result += sList[i]
-	}
-	return result
-}
-
-// GetMergeStrWithBlank 获取合并字符串，中间使用空格合并
-// 缩写： GetMB
-//
-// "a","b","c" >> "a b c"
-func GetMergeStrWithBlank(sList ...string) string {
-	return GetMergeStrWithSymbol(" ", sList...)
-}
-
-// GetMergeStrWithSymbol 获取合并字符串，指定中间的合并符
-// 缩写： GetMBS
-//
-// "a","b","c" > "/" > "a/b/c"
-func GetMergeStrWithSymbol(symbol string, sList ...string) string {
-	result := ""
-	for i := range sList {
-		if i == 0 {
-			result += sList[i]
-		} else {
-			result += symbol + sList[i]
-		}
-	}
-	return result
-}
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
 
 // GetM 获取合并字符串
-// GetMergeStr 的缩写
+// GetMerge 的缩写
 //
 // "a","b","c" >> "abc"
 func GetM(sList ...string) string {
-	return GetMergeStr(sList...)
+	return yiuAll.YiuSStrGetM(sList...)
 }
 
-// GetMB 获取合并字符串，中间使用空格合并
-// GetMergeStrWithBlank 的缩写
+// GetMBB 获取合并字符串，中间使用空格合并
+// GetMergeByBlank 的缩写
 //
 // "a","b","c" >> "a b c"
-func GetMB(sList ...string) string {
-	return GetMergeStrWithBlank(sList...)
+func GetMBB(sList ...string) string {
+	return yiuAll.YiuSStrGetMBB(sList...)
 }
 
 // GetMBS 获取合并字符串，指定中间的合并符
-// GetMergeStrWithSymbol 的缩写
+// GetMergeBySep 的缩写
 //
 // "a","b","c" > "/" > "a/b/c"
-func GetMBS(symbol string, sList ...string) string {
-	return GetMergeStrWithSymbol(symbol, sList...)
+func GetMBS(sep string, sList ...string) string {
+	return yiuAll.YiuSStrGetMBS(sep, sList...)
+}
+
+// GetMerge 获取合并字符串
+// 缩写： GetM
+//
+// "a","b","c" >> "abc"
+func GetMerge(sList ...string) string {
+	return yiuAll.YiuSStrGetMerge(sList...)
+}
+
+// GetMergeByBlank 获取合并字符串，中间使用空格合并
+// 缩写： GetMBB
+//
+// "a","b","c" >> "a b c"
+func GetMergeByBlank(sList ...string) string {
+	return yiuAll.YiuSStrGetMergeByBlank(sList...)
+}
+
+// GetMergeByOsPathSep 获取合并字符串，中间使用系统路径分隔符合并
+func GetMergeByOsPathSep(sList ...string) string {
+	return yiuAll.YiuSStrGetMergeByOsPathSep(sList...)
+}
+
+// GetMergeBySep 获取合并字符串，指定中间的合并符
+// 缩写： GetMBS
+//
+// "a","b","c" > "/" > "a/b/c"
+func GetMergeBySep(Sep string, sList ...string) string {
+	return yiuAll.YiuSStrGetMergeBySep(Sep, sList...)
 }

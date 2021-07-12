@@ -1,13 +1,10 @@
-package YiuByteList
+package yiuByteList
 
-import (
-	"bytes"
-	"github.com/psampaz/slice"
-)
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
 
 // IsContainsEl 判断切片是否包含某byte
 func IsContainsEl(list []byte, b byte) bool {
-	return slice.ContainsByte(list, b)
+	return yiuAll.YiuByteListIsContainsEl(list, b)
 }
 
 // IsContainsElList 判断切片是否包含子切片
@@ -30,45 +27,25 @@ func IsContainsEl(list []byte, b byte) bool {
 //
 // nil > nil > false
 func IsContainsElList(list, subList []byte) bool {
-	if GetIndexByList(list, subList) == -1 {
-		return false
-	} else {
-		return true
-	}
-}
-
-// IsInvalid 判断切片为nil或长度为0
-func IsInvalid(list []byte) bool {
-	return IsNil(list) || IsEmpty(list)
-}
-
-// IsNil 判断切片是否为nil
-func IsNil(list []byte) bool {
-	return list == nil
+	return yiuAll.YiuByteListIsContainsElList(list, subList)
 }
 
 // IsEmpty 判断切片长度是否等于0
 func IsEmpty(list []byte) bool {
-	return len(list) == 0
+	return yiuAll.YiuByteListIsEmpty(list)
 }
 
 // IsEqual 判断两个数组是否相等
 func IsEqual(listA, listB []byte) bool {
-	if (listA == nil) != (listB == nil) {
-		return false
-	}
-	if len(listA) != len(listB) {
-		return false
-	}
-	for i := range listA {
-		if listA[i] != listB[i] {
-			return false
-		}
-	}
-	return true
+	return yiuAll.YiuByteListIsEqual(listA, listB)
 }
 
 // IsEqualFold 按utf-8编码判断是否相等，不区分大小写
 func IsEqualFold(listA, listB []byte) bool {
-	return bytes.EqualFold(listA, listB)
+	return yiuAll.YiuByteListIsEqualFold(listA, listB)
+}
+
+// IsNil 判断切片是否为nil
+func IsNil(list []byte) bool {
+	return yiuAll.YiuByteListIsNil(list)
 }

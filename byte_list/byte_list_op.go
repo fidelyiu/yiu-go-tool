@@ -1,21 +1,15 @@
-package YiuByteList
+package yiuByteList
 
-import YiuBaseError "github.com/fidelyiu/yiu-go/yiu_error"
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
 
 // OpDeduplicate 获取去重切片
 func OpDeduplicate(list *[]byte) {
-	if list == nil {
-		return
-	}
-	*list = GetDeduplicate(*list)
+	yiuAll.YiuByteListOpDeduplicate(list)
 }
 
 // OpDeleteByIndex 根据索引删除，超出索引不处理
 func OpDeleteByIndex(list *[]byte, delIndex int) {
-	if list == nil {
-		return
-	}
-	*list = GetDeleteByIndex(*list, delIndex)
+	yiuAll.YiuByteListOpDeleteByIndex(list, delIndex)
 }
 
 // OpDeleteByRangeIndex 根据范围索引删除
@@ -23,53 +17,30 @@ func OpDeleteByIndex(list *[]byte, delIndex int) {
 // startIndex > endIndex 无效，
 // 负值索引无效
 func OpDeleteByRangeIndex(list *[]byte, startIndex, endIndex int) {
-	if list == nil {
-		return
-	}
-	*list = GetDeleteByRangeIndex(*list, startIndex, endIndex)
+	yiuAll.YiuByteListOpDeleteByRangeIndex(list, startIndex, endIndex)
 }
 
 // OpFilter 过滤切片元素，保留返回ture的
 func OpFilter(list *[]byte, keep func(x byte) bool) {
-	if list == nil {
-		return
-	}
-	*list = GetFilter(*list, keep)
-}
-
-// OpPop 切片元素出栈，nil、空切片都会报错
-func OpPop(list *[]byte) (byte, error) {
-	if list == nil {
-		return 0, YiuBaseError.ErrAddrNil
-	}
-	pop, tempList, err := GetPop(*list)
-	if err != nil {
-		return 0, err
-	}
-	*list = tempList
-	return pop, nil
-}
-
-// OpReverse 切片元素顺序反转
-func OpReverse(list *[]byte) {
-	if list == nil {
-		return
-	}
-	*list = GetReverse(*list)
-}
-
-// OpShuffle 切片元素乱序排列
-func OpShuffle(list *[]byte) {
-	if list == nil {
-		return
-	}
-	*list = GetShuffle(*list)
+	yiuAll.YiuByteListOpFilter(list, keep)
 }
 
 // OpMap 获取遍历计算后的切片，不改变原切片
 func OpMap(list *[]byte, opFunc func(int, byte) byte) {
-	if list == nil {
-		return
-	}
-	*list = GetMap(*list, opFunc)
+	yiuAll.YiuByteListOpMap(list, opFunc)
+}
+
+// OpPop 切片元素出栈，nil、空切片都会报错
+func OpPop(list *[]byte) (byte, error) {
+	return yiuAll.YiuByteListOpPop(list)
+}
+
+// OpReverse 切片元素顺序反转
+func OpReverse(list *[]byte) {
+	yiuAll.YiuByteListOpReverse(list)
+}
+
+// OpShuffle 切片元素乱序排列
+func OpShuffle(list *[]byte) {
+	yiuAll.YiuByteListOpShuffle(list)
 }

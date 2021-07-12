@@ -1,13 +1,10 @@
-package YiuStrList
+package yiuStrList
 
-import (
-	"github.com/psampaz/slice"
-	"strings"
-)
+import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
 
 // IsContainsEl 判断切片是否包含某字符串
 func IsContainsEl(list []string, str string) bool {
-	return slice.ContainsString(list, str)
+	return yiuAll.YiuStrListIsContainsEl(list, str)
 }
 
 // IsContainsElList 判断切片是否包含子切片
@@ -29,53 +26,25 @@ func IsContainsEl(list []string, str string) bool {
 //
 // nil > nil > false
 func IsContainsElList(list, subList []string) bool {
-	if GetIndexByList(list, subList) == -1 {
-		return false
-	} else {
-		return true
-	}
-}
-
-// IsInvalid 判断切片为nil或长度为0
-func IsInvalid(list []string) bool {
-	return IsNil(list) || IsEmpty(list)
-}
-
-// IsNil 判断切片是否为nil
-func IsNil(list []string) bool {
-	return list == nil
+	return yiuAll.YiuStrListIsContainsElList(list, subList)
 }
 
 // IsEmpty 判断切片长度是否等于0
 func IsEmpty(list []string) bool {
-	return len(list) == 0
+	return yiuAll.YiuStrListIsEmpty(list)
 }
 
 // IsEqual 判断两个数组是否相等
 func IsEqual(listA, listB []string) bool {
-	return isEqual(listA, listB, func(strA, strB string) bool {
-		return strA == strB
-	})
+	return yiuAll.YiuStrListIsEqual(listA, listB)
 }
 
 // IsEqualFold 按utf-8编码判断是否相等，不区分大小写
 func IsEqualFold(listA, listB []string) bool {
-	return isEqual(listA, listB, func(strA, strB string) bool {
-		return strings.EqualFold(strA, strB)
-	})
+	return yiuAll.YiuStrListIsEqualFold(listA, listB)
 }
 
-func isEqual(listA, listB []string, equalFunc func(strA, strB string) bool) bool {
-	if (listA == nil) != (listB == nil) {
-		return false
-	}
-	if len(listA) != len(listB) {
-		return false
-	}
-	for i := range listA {
-		if !equalFunc(listA[i], listB[i]) {
-			return false
-		}
-	}
-	return true
+// IsNil 判断切片是否为nil
+func IsNil(list []string) bool {
+	return yiuAll.YiuStrListIsNil(list)
 }
