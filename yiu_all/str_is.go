@@ -89,12 +89,12 @@ func YiuStrIsEndWithLetterByte(str string) bool {
 
 // YiuStrIsStartWithLetterRune 是否以字母Rune开头
 func YiuStrIsStartWithLetterRune(str string) bool {
-	return YiuStrIsLetter(YiuStrGetFirstRune(str))
+	return YiuStrIsLetter(YiuStrGetFirstRuneStr(str))
 }
 
 // YiuStrIsEndWithLetterRune 是否以字母Rune结尾
 func YiuStrIsEndWithLetterRune(str string) bool {
-	return YiuStrIsLetter(YiuStrGetLastRune(str))
+	return YiuStrIsLetter(YiuStrGetLastRuneStr(str))
 }
 
 // YiuStrIsTure 判读字符串是否是true

@@ -36,11 +36,19 @@ func GetFirstByteNoErr(str string) byte {
 }
 
 // GetFirstRune 获取第一个Rune字符串
+// "你好" >> 20320
+// "" >> 0
+// "Hello" >> 72
+func GetFirstRune(str string) rune {
+	return yiuAll.YiuStrGetFirstRune(str)
+}
+
+// GetFirstRuneStr 获取第一个Rune字符串
 // "你好" >> "你"
 // "" >> ""
 // "Hello" >> "H"
-func GetFirstRune(str string) string {
-	return yiuAll.YiuStrGetFirstRune(str)
+func GetFirstRuneStr(str string) string {
+	return yiuAll.YiuStrGetFirstRuneStr(str)
 }
 
 // GetIndexAndFirstSubBySStr 从多个子字符串中获取索引，返回第一个的有效索引，如果都不满足则返回-1
@@ -90,11 +98,19 @@ func GetLastByteNoErr(str string) byte {
 }
 
 // GetLastRune 获取最后一个Rune字符串
+// "你好" >> 22909
+// "" >> 0
+// "Hello" >> 111
+func GetLastRune(str string) rune {
+	return yiuAll.YiuStrGetLastRune(str)
+}
+
+// GetLastRuneStr 获取最后一个Rune字符串
 // "你好" >> "好"
 // "" >> ""
 // "Hello" >> "o"
-func GetLastRune(str string) string {
-	return yiuAll.YiuStrGetLastRune(str)
+func GetLastRuneStr(str string) string {
+	return yiuAll.YiuStrGetLastRuneStr(str)
 }
 
 // GetStrByRuneIndex 根据rune长度获取字符串中的字符串

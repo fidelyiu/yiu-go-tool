@@ -208,10 +208,22 @@ func YiuStrGetStrByRuneIndex(str string, i int) (string, error) {
 }
 
 // YiuStrGetFirstRune 获取第一个Rune字符串
+// "你好" >> 20320
+// "" >> 0
+// "Hello" >> 72
+func YiuStrGetFirstRune(str string) rune {
+	if str == "" {
+		return 0
+	}
+	list := YiuStrToRuneList(str)
+	return list[0]
+}
+
+// YiuStrGetFirstRuneStr 获取第一个Rune字符串
 // "你好" >> "你"
 // "" >> ""
 // "Hello" >> "H"
-func YiuStrGetFirstRune(str string) string {
+func YiuStrGetFirstRuneStr(str string) string {
 	if str == "" {
 		return ""
 	}
@@ -220,10 +232,22 @@ func YiuStrGetFirstRune(str string) string {
 }
 
 // YiuStrGetLastRune 获取最后一个Rune字符串
+// "你好" >> 22909
+// "" >> 0
+// "Hello" >> 111
+func YiuStrGetLastRune(str string) rune {
+	if str == "" {
+		return 0
+	}
+	list := YiuStrToRuneList(str)
+	return list[len(list)-1]
+}
+
+// YiuStrGetLastRuneStr 获取最后一个Rune字符串
 // "你好" >> "好"
 // "" >> ""
 // "Hello" >> "o"
-func YiuStrGetLastRune(str string) string {
+func YiuStrGetLastRuneStr(str string) string {
 	if str == "" {
 		return ""
 	}

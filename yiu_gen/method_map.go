@@ -315,7 +315,9 @@ func GetMethodMap() map[string]map[string][]string {
 			"GetIndexAndFirstSubBySStr", // 索引第一元素多值
 			"GetStrByRuneIndex",         // Rune索引
 			"GetFirstRune",              // 第一Rune元素
+			"GetFirstRuneStr",           // 第一Rune字符串
 			"GetLastRune",               // 最后Rune元素
+			"GetLastRuneStr",            // 最后Rune字符串
 			"GetDelEndRNStr",            // 去除结尾\r\n
 			"GetTureStr",
 			"GetFalseStr",
