@@ -207,7 +207,7 @@ func YiuStrGetStrByRuneIndex(str string, i int) (string, error) {
 	return string(runeList[i]), nil
 }
 
-// YiuStrGetFirstRune 获取第一个Rune字符串
+// YiuStrGetFirstRune 获取第一个Rune元素
 // "你好" >> 20320
 // "" >> 0
 // "Hello" >> 72
@@ -231,7 +231,7 @@ func YiuStrGetFirstRuneStr(str string) string {
 	return string(list[0])
 }
 
-// YiuStrGetLastRune 获取最后一个Rune字符串
+// YiuStrGetLastRune 获取最后一个Rune元素
 // "你好" >> 22909
 // "" >> 0
 // "Hello" >> 111

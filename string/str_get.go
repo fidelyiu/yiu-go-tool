@@ -35,7 +35,7 @@ func GetFirstByteNoErr(str string) byte {
 	return yiuAll.YiuStrGetFirstByteNoErr(str)
 }
 
-// GetFirstRune 获取第一个Rune字符串
+// GetFirstRune 获取第一个Rune元素
 // "你好" >> 20320
 // "" >> 0
 // "Hello" >> 72
@@ -97,7 +97,7 @@ func GetLastByteNoErr(str string) byte {
 	return yiuAll.YiuStrGetLastByteNoErr(str)
 }
 
-// GetLastRune 获取最后一个Rune字符串
+// GetLastRune 获取最后一个Rune元素
 // "你好" >> 22909
 // "" >> 0
 // "Hello" >> 111
