@@ -13,6 +13,10 @@
 go get -u github.com/fidelyiu/yiu-go-tool
 ```
 
+如 goproxy.cn 更新失败，尝试指定版本
+```bash
+go get github.com/fidelyiu/yiu-go-tool@v1.1.2
+```
 
 
 ## 3.使用
