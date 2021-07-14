@@ -315,8 +315,10 @@ func GetMethodMap() map[string]map[string][]string {
 			"GetIndexAndFirstSubBySStr", // 索引第一元素多值
 			"GetStrByRuneIndex",         // Rune索引
 			"GetFirstRune",              // 第一Rune元素
+			"GetFirstRuneIntStr",        // 第一Rune元素int字符串
 			"GetFirstRuneStr",           // 第一Rune字符串
 			"GetLastRune",               // 最后Rune元素
+			"GetLastRuneIntStr",         // 最后Rune元素int字符串
 			"GetLastRuneStr",            // 最后Rune字符串
 			"GetDelEndRNStr",            // 去除结尾\r\n
 			"GetTureStr",
@@ -426,6 +428,11 @@ func GetMethodMap() map[string]map[string][]string {
 			"GetMinLengthEl",
 		},
 	}
+	allMethodMap["yiuRune"] = map[string][]string{
+		"To": {
+			"ToIntStr",
+		},
+	}
 	allMethodMap["yiuRuneList"] = map[string][]string{
 		"Get": {
 			"GetDeduplicate",        // 去重
@@ -469,6 +476,16 @@ func GetMethodMap() map[string]map[string][]string {
 			"IsGeByUnicodeAndLowerBeforeUpper", // Unicode(大小写颠倒) 大于等于
 			"IsLtByUnicodeAndLowerBeforeUpper", // Unicode(大小写颠倒) 小于
 			"IsLeByUnicodeAndLowerBeforeUpper", // Unicode(大小写颠倒) 小于等于
+		},
+	}
+	allMethodMap["yiuHanZi"] = map[string][]string{
+		"Is": {
+			"IsHanZi",
+		},
+		"Get": {
+			"GetPinYinByRune",
+			"GetBiHuaByRune",
+			"GetBuShouByRune",
 		},
 	}
 	// 名字排序

@@ -309,6 +309,16 @@ func GetModuleList() []YiuModule {
 			},
 		},
 		{
+			PackageName: "yiuRune",
+			DirName:     "rune",
+			MethodModule: []YiuMethodModule{
+				{
+					Type:     To,
+					FileName: "rune_to.go",
+				},
+			},
+		},
+		{
 			PackageName: "yiuRuneList",
 			DirName:     "rune_list",
 			MethodModule: []YiuMethodModule{
@@ -323,6 +333,20 @@ func GetModuleList() []YiuModule {
 				{
 					Type:     Is,
 					FileName: "rune_list_is.go",
+				},
+			},
+		},
+		{
+			PackageName: "yiuHanZi",
+			DirName:     "han_zi",
+			MethodModule: []YiuMethodModule{
+				{
+					Type:     Is,
+					FileName: "han_zi_is.go",
+				},
+				{
+					Type:     Get,
+					FileName: "han_zi_get.go",
 				},
 			},
 		},

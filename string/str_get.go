@@ -43,6 +43,14 @@ func GetFirstRune(str string) rune {
 	return yiuAll.YiuStrGetFirstRune(str)
 }
 
+// GetFirstRuneIntStr 获取第一个Rune元素int的string
+// "你好" >> "20320"
+// "" >> "0"
+// "Hello" >> "72"
+func GetFirstRuneIntStr(str string) string {
+	return yiuAll.YiuStrGetFirstRuneIntStr(str)
+}
+
 // GetFirstRuneStr 获取第一个Rune字符串
 // "你好" >> "你"
 // "" >> ""
@@ -103,6 +111,14 @@ func GetLastByteNoErr(str string) byte {
 // "Hello" >> 111
 func GetLastRune(str string) rune {
 	return yiuAll.YiuStrGetLastRune(str)
+}
+
+// GetLastRuneIntStr 获取最后一个Rune元素int的string
+// "你好" >> "22909"
+// "" >> "0"
+// "Hello" >> "111"
+func GetLastRuneIntStr(str string) string {
+	return yiuAll.YiuStrGetLastRuneIntStr(str)
 }
 
 // GetLastRuneStr 获取最后一个Rune字符串

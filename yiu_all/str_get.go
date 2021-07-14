@@ -219,6 +219,14 @@ func YiuStrGetFirstRune(str string) rune {
 	return list[0]
 }
 
+// YiuStrGetFirstRuneIntStr 获取第一个Rune元素int的string
+// "你好" >> "20320"
+// "" >> "0"
+// "Hello" >> "72"
+func YiuStrGetFirstRuneIntStr(str string) string {
+	return YiuRuneToIntStr(YiuStrGetFirstRune(str))
+}
+
 // YiuStrGetFirstRuneStr 获取第一个Rune字符串
 // "你好" >> "你"
 // "" >> ""
@@ -241,6 +249,14 @@ func YiuStrGetLastRune(str string) rune {
 	}
 	list := YiuStrToRuneList(str)
 	return list[len(list)-1]
+}
+
+// YiuStrGetLastRuneIntStr 获取最后一个Rune元素int的string
+// "你好" >> "22909"
+// "" >> "0"
+// "Hello" >> "111"
+func YiuStrGetLastRuneIntStr(str string) string {
+	return YiuRuneToIntStr(YiuStrGetLastRune(str))
 }
 
 // YiuStrGetLastRuneStr 获取最后一个Rune字符串
