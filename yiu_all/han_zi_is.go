@@ -44,3 +44,81 @@ func YiuHanZiIsHanZi(i rune) bool {
 	}
 	return false
 }
+
+// YiuHanZiIsNotHanZi 是否不是汉字
+func YiuHanZiIsNotHanZi(i rune) bool {
+	return !YiuHanZiIsHanZi(i)
+}
+
+// YiuHanZiIsGt 字符串是否大于
+//
+// - 汉字在前，非汉字在后
+// - 按拼音、音调、部首、笔画排序
+func YiuHanZiIsGt(s1, s2 string) bool {
+	if YiuStrIsBlank(s1) {
+		return true
+	}
+	r1 := YiuStrToRuneList(s1)
+	r2 := YiuStrToRuneList(s2)
+	for i := range r1 {
+		// 不是汉字排到后面去
+		if YiuHanZiIsNotHanZi(r1[i]) {
+			return true
+		}
+		tr := YiuRuneListGetElByIndex(r2, i)
+		if r1[i] == tr {
+			continue
+		} else {
+			// rune不一样了
+			// 比较拼音
+			p1 := YiuPinYinGetDefByRune(r1[i])
+			p2 := YiuPinYinGetDefByRune(tr)
+			if p1 == p2 {
+				// 如果拼音相等，比较部首
+				b1 := YiuBuShouGetByRune(r1[i])
+				b2 := YiuBuShouGetByRune(tr)
+				if b1 == b2 {
+					// 如果部首相等，比较笔画
+					h1 := YiuBiHuaGetByRune(r1[i])
+					h2 := YiuBiHuaGetByRune(tr)
+					return h1 > h2
+				} else {
+					return YiuStrIsGt(b1, b2)
+				}
+			} else {
+				return YiuPinYinIsGt(p1, p2)
+			}
+		}
+	}
+	return true
+}
+
+// YiuHanZiIsGe 字符串是否大于等于
+//
+// - 汉字在前，非汉字在后
+// - 按拼音、音调、部首、笔画排序
+func YiuHanZiIsGe(s1, s2 string) bool {
+	if s1 == s2 {
+		return true
+	}
+	return YiuHanZiIsGt(s1, s2)
+}
+
+// YiuHanZiIsLt 字符串是否小于
+//
+// - 汉字在前，非汉字在后
+// - 按拼音、音调、部首、笔画排序
+func YiuHanZiIsLt(s1, s2 string) bool {
+	return !YiuHanZiIsGt(s1, s2)
+}
+
+// YiuHanZiIsLe 字符串是否小于等于
+//
+// - 汉字在前，非汉字在后
+// - 按拼音、音调、部首、笔画排序
+func YiuHanZiIsLe(s1, s2 string) bool {
+	if s1 == s2 {
+		return true
+	}
+	return !YiuHanZiIsLt(s1, s2)
+}

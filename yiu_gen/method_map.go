@@ -341,6 +341,10 @@ func GetMethodMap() map[string]map[string][]string {
 			"IsFalse",
 			"IsContainsAnyByte",
 			"IsContainsAnyRune",
+			"IsGt",
+			"IsGe",
+			"IsLt",
+			"IsLe",
 		},
 		"Op": {
 			"OpTrimSStr",
@@ -479,13 +483,50 @@ func GetMethodMap() map[string]map[string][]string {
 		},
 	}
 	allMethodMap["yiuHanZi"] = map[string][]string{
+		"Get": {
+			"GetFirstLetterStr",
+		},
 		"Is": {
 			"IsHanZi",
+			"IsNotHanZi",
+			"IsGt",
+			"IsGe",
+			"IsLt",
+			"IsLe",
 		},
+		"To": {
+			"ToPinYinList",
+			"ToPinYinFirstLetterList",
+			"ToBiHuaList",
+			"ToBuShouList",
+		},
+	}
+	allMethodMap["yiuBiHua"] = map[string][]string{
 		"Get": {
-			"GetPinYinByRune",
-			"GetBiHuaByRune",
-			"GetBuShouByRune",
+			"GetByRune",
+		},
+	}
+	allMethodMap["yiuBuShou"] = map[string][]string{
+		"Get": {
+			"GetByRune",
+		},
+	}
+	allMethodMap["yiuPinYin"] = map[string][]string{
+		"Get": {
+			"GetByRune",
+			"GetDefByRune",
+			"GetFirstLetterByRune",
+		},
+		"Is": {
+			"IsGt",
+			"IsGe",
+			"IsLt",
+			"IsLe",
+		},
+		"To": {
+			"ToNoTone",
+			"ToLower",
+			"ToUpper",
 		},
 	}
 	// 名字排序

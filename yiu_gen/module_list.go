@@ -348,6 +348,48 @@ func GetModuleList() []YiuModule {
 					Type:     Get,
 					FileName: "han_zi_get.go",
 				},
+				{
+					Type:     To,
+					FileName: "han_zi_to.go",
+				},
+			},
+		},
+		{
+			PackageName: "yiuPinYin",
+			DirName:     "pin_yin",
+			MethodModule: []YiuMethodModule{
+				{
+					Type:     Get,
+					FileName: "pin_yin_get.go",
+				},
+				{
+					Type:     Is,
+					FileName: "pin_yin_is.go",
+				},
+				{
+					Type:     To,
+					FileName: "pin_yin_to.go",
+				},
+			},
+		},
+		{
+			PackageName: "yiuBiHua",
+			DirName:     "bi_hua",
+			MethodModule: []YiuMethodModule{
+				{
+					Type:     Get,
+					FileName: "bi_hua_get.go",
+				},
+			},
+		},
+		{
+			PackageName: "yiuBuShou",
+			DirName:     "bu_shou",
+			MethodModule: []YiuMethodModule{
+				{
+					Type:     Get,
+					FileName: "bu_shou_get.go",
+				},
 			},
 		},
 	}

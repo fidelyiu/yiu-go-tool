@@ -60,7 +60,7 @@ func YiuRuneListIsGtByUnicode(listA, listB []rune) bool {
 		}
 		return listA[i] > itemB
 	}
-	return false
+	return true
 }
 
 // YiuRuneListIsGeByUnicode 按unicode逐个比较，listA是否大于等于listB

@@ -160,3 +160,31 @@ func YiuStrIsContainsAnyRune(s, chars string) bool {
 	}
 	return false
 }
+
+// YiuStrIsGt 字符串按照unicode逐一比较，是否大于
+func YiuStrIsGt(s1, s2 string) bool {
+	r1 := YiuStrToRuneList(s1)
+	r2 := YiuStrToRuneList(s2)
+	return YiuRuneListIsGtByUnicode(r1, r2)
+}
+
+// YiuStrIsGe 字符串按照unicode逐一比较，是否大于等于
+func YiuStrIsGe(s1, s2 string) bool {
+	if s1 == s2 {
+		return true
+	}
+	return YiuStrIsGt(s1, s2)
+}
+
+// YiuStrIsLt 字符串按照unicode逐一比较，是否小于
+func YiuStrIsLt(s1, s2 string) bool {
+	return !YiuStrIsGt(s1, s2)
+}
+
+// YiuStrIsLe 字符串按照unicode逐一比较，是否小于等于
+func YiuStrIsLe(s1, s2 string) bool {
+	if s1 == s2 {
+		return true
+	}
+	return YiuStrIsLt(s1, s2)
+}

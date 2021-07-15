@@ -15,7 +15,7 @@ go get -u github.com/fidelyiu/yiu-go-tool
 
 如 goproxy.cn 更新失败，尝试指定版本
 ```bash
-go get github.com/fidelyiu/yiu-go-tool@v1.1.2
+go get github.com/fidelyiu/yiu-go-tool@v1.1.3
 ```
 
 
@@ -69,12 +69,16 @@ Yiu[t].[o]FuncName(...)
 
 特殊类型：
 
-| 对象类型 | 工具包名  | 说明                                      |
-| -------- | --------- | ----------------------------------------- |
-| `file`   | `yiuFile` | 文件                                      |
-| `dir`    | `yiuDir`  | 目录                                      |
-| `os`     | `yiuOs`   | 系统                                      |
-| `log`    | `yiuLog`  | 日志，<br />只是简单的改变了`fmt`的颜色。 |
+| 对象类型 | 工具包名    | 说明                                      |
+| -------- | ----------- | ----------------------------------------- |
+| `file`   | `yiuFile`   | 文件                                      |
+| `dir`    | `yiuDir`    | 目录                                      |
+| `os`     | `yiuOs`     | 系统                                      |
+| `log`    | `yiuLog`    | 日志，<br />只是简单的改变了`fmt`的颜色。 |
+| `汉字`   | `yiuHanZi`  | 字符串和汉字相关的方法                    |
+| `拼音`   | `yiuPinYin` | 汉字字符串转拼音相关方法                  |
+| `笔画`   | `yiuBiHua`  | 汉字字符串转笔画相关方法                  |
+| `部首`   | `yiuBuShou` | 汉字字符串转部首相关方法                  |
 
 
 

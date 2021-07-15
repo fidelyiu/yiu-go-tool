@@ -59,6 +59,21 @@ func IsFalse(str string) bool {
 	return yiuAll.YiuStrIsFalse(str)
 }
 
+// IsGe 字符串按照unicode逐一比较，是否大于等于
+func IsGe(s1, s2 string) bool {
+	return yiuAll.YiuStrIsGe(s1, s2)
+}
+
+// IsGt 字符串按照unicode逐一比较，是否大于
+func IsGt(s1, s2 string) bool {
+	return yiuAll.YiuStrIsGt(s1, s2)
+}
+
+// IsLe 字符串按照unicode逐一比较，是否小于等于
+func IsLe(s1, s2 string) bool {
+	return yiuAll.YiuStrIsLe(s1, s2)
+}
+
 // IsLetter 判断是否是字母a-zA-Z，如果是字母返回true
 //
 // "" >> false
@@ -72,6 +87,11 @@ func IsLetter(str string) bool {
 
 func IsLowerLetter(str string) bool {
 	return yiuAll.YiuStrIsLowerLetter(str)
+}
+
+// IsLt 字符串按照unicode逐一比较，是否小于
+func IsLt(s1, s2 string) bool {
+	return yiuAll.YiuStrIsLt(s1, s2)
 }
 
 // IsNotBlank 判断是否全部非空格或者空
