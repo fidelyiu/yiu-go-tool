@@ -501,6 +501,16 @@ func GetMethodMap() map[string]map[string][]string {
 			"ToBuShouList",
 		},
 	}
+	allMethodMap["yiuHanZiList"] = map[string][]string{
+		"Get": {
+			"GetDesc",
+			"GetAsc",
+		},
+		"Op": {
+			"OpDesc",
+			"OpAsc",
+		},
+	}
 	allMethodMap["yiuBiHua"] = map[string][]string{
 		"Get": {
 			"GetByRune",

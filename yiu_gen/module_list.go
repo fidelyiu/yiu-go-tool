@@ -355,6 +355,20 @@ func GetModuleList() []YiuModule {
 			},
 		},
 		{
+			PackageName: "yiuHanZiList",
+			DirName:     "han_zi_list",
+			MethodModule: []YiuMethodModule{
+				{
+					Type:     Get,
+					FileName: "han_zi_list_get.go",
+				},
+				{
+					Type:     Op,
+					FileName: "han_zi_list_op.go",
+				},
+			},
+		},
+		{
 			PackageName: "yiuPinYin",
 			DirName:     "pin_yin",
 			MethodModule: []YiuMethodModule{
