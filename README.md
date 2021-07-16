@@ -1,11 +1,8 @@
 ## 1.YiuGo工具类
+
 个人工具库，项目一直跟进中...
 
-
-
 如果你更熟悉`strings`、`unicodes`、`so`...这些基础的包，建议使用官方的基础包。
-
-
 
 ## 2.安装
 
@@ -14,10 +11,10 @@ go get -u github.com/fidelyiu/yiu-go-tool
 ```
 
 如 goproxy.cn 更新失败，尝试指定版本
-```bash
-go get github.com/fidelyiu/yiu-go-tool@v1.1.3
-```
 
+```bash
+go get github.com/fidelyiu/yiu-go-tool@v1.1.4
+```
 
 ## 3.使用
 
@@ -28,10 +25,10 @@ go get github.com/fidelyiu/yiu-go-tool@v1.1.3
 Yiu[t].[o]FuncName(...)
 ```
 
-
 ## 4.目前支持
 
 ### 4.1命名说明
+
 因为之前Java的习惯我把大部分命名修改了：
 
 | 原类型   | 修改后 |
@@ -39,8 +36,6 @@ Yiu[t].[o]FuncName(...)
 | `slice`  | `list` |
 | `数组`   | `arr`  |
 | `string` | `str`  |
-
-
 
 ### 4.2.对象类型[t]
 
@@ -65,8 +60,6 @@ Yiu[t].[o]FuncName(...)
 | `rune_list`      | `yiuRuneList`  | `runeList`                                   |
 | `time`           | `yiuTime`      | 时间                                         |
 
-
-
 特殊类型：
 
 | 对象类型    | 工具包名       | 说明                                      |
@@ -75,13 +68,6 @@ Yiu[t].[o]FuncName(...)
 | `dir`       | `yiuDir`       | 目录                                      |
 | `os`        | `yiuOs`        | 系统                                      |
 | `log`       | `yiuLog`       | 日志，<br />只是简单的改变了`fmt`的颜色。 |
-| `汉字`      | `yiuHanZi`     | 字符串和汉字相关的方法                    |
-| `汉字_list` | `yiuHanZiList` | 字符串数组和汉字相关方法                  |
-| `拼音`      | `yiuPinYin`    | 汉字字符串转拼音相关方法                  |
-| `笔画`      | `yiuBiHua`     | 汉字字符串转笔画相关方法                  |
-| `部首`      | `yiuBuShou`    | 汉字字符串转部首相关方法                  |
-
-
 
 ### 4.3.操作[o]
 
@@ -93,16 +79,12 @@ Yiu[t].[o]FuncName(...)
 | `Op...`  | 操作并修改数据                                       |
 | `Do...`  | 执行一些操作                                         |
 
-
-
 > `Get`和`To`意思上不一样，需要稍微了解了解。
 >
 > - `Get`：后面一般接`形容词`+`类型`，比如`YiuStr.GetFirstByte`
 > - `To`：后面一般接`类型`+`By`+`计算方式`，比如`YiuStr.ToStrList`
 >
 > 如果实在不行就两个里面都找一找。
-
-
 
 ## 5.依赖项
 

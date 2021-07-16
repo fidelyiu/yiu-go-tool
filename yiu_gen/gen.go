@@ -11,8 +11,8 @@ import (
 	"strings"
 )
 
-func Gen() {
-	allModule := GetModuleList()
+func Gen(moduleF func() []YiuModule, methodF func() map[string]map[string][]string) {
+	allModule := moduleF()
 	// allModule := []YiuModule{
 	// 	{
 	// 		PackageName: "yiuBool",
@@ -35,11 +35,11 @@ func Gen() {
 	// 		},
 	// 	},
 	// }
-	methodMap := GetMethodMap()
+	methodMap := methodF()
 	for i := range allModule {
 		packageName := allModule[i].PackageName
 		yiuAll.YiuLogSuccessLn(yiuAll.YiuIntToStr(i+1) + "." + packageName)
-		err := genPackage(allModule[i], methodMap)
+		err := genPackage(allModule[i], methodMap, moduleF)
 		if err != nil {
 			return
 		}
@@ -47,7 +47,7 @@ func Gen() {
 	}
 }
 
-func genPackage(p YiuModule, methodMap map[string]map[string][]string) error {
+func genPackage(p YiuModule, methodMap map[string]map[string][]string, moduleF func() []YiuModule) error {
 	packageName := p.PackageName
 	dirName := p.DirName
 
@@ -175,6 +175,7 @@ func genPackage(p YiuModule, methodMap map[string]map[string][]string) error {
 				yiuAll.YiuStrGetTrimRightSStr(moduleFileName, ".go")+"_example_test.go",
 				exampleFilePath,
 				packageName+"_test",
+				moduleF,
 			)
 			if err != nil {
 				yiuAll.YiuLogErrorLn("\t\t◎ 结果[E]：生成`" + genExampleFilePath + "`案例文件失败!")
@@ -186,7 +187,7 @@ func genPackage(p YiuModule, methodMap map[string]map[string][]string) error {
 	return nil
 }
 
-func genExampleFile(dirName, fileName, srcFilePath, packageName string) error {
+func genExampleFile(dirName, fileName, srcFilePath, packageName string, moduleF func() []YiuModule) error {
 	pathStr := yiuAll.YiuSStrGetMergeByOsPathSep(dirName, fileName)
 	// 1.创建文件
 	// p.DirName / p.MethodModule[i].FileName
@@ -211,7 +212,7 @@ func genExampleFile(dirName, fileName, srcFilePath, packageName string) error {
 
 	// 3.读取测试文件
 	yiuAll.YiuLogSuccessLn("\t\t\t◎ 操作[S]：读取`" + srcFilePath + "`测试文件内容。")
-	content, err := genExampleFileStr(srcFilePath, packageName)
+	content, err := genExampleFileStr(srcFilePath, packageName, moduleF)
 	if err != nil {
 		yiuAll.YiuLogErrorLn("\t\t\t◎ 结果[E]：读取`" + srcFilePath + "`测试文件内容失败!")
 		yiuAll.YiuLogErrorLn(err.Error())
@@ -244,7 +245,7 @@ func genExampleFile(dirName, fileName, srcFilePath, packageName string) error {
 	return nil
 }
 
-func genExampleFileStr(filePath, packageName string) (string, error) {
+func genExampleFileStr(filePath, packageName string, moduleF func() []YiuModule) (string, error) {
 	outStr := ""
 	file, err := os.Open(filePath)
 	if err != nil {
@@ -278,7 +279,7 @@ func genExampleFileStr(filePath, packageName string) (string, error) {
 			}
 			continue
 		}
-		ts, addImportStr, eErr := handleExampleLine(str, packageName)
+		ts, addImportStr, eErr := handleExampleLine(str, packageName, moduleF)
 		if eErr != nil {
 			return "", eErr
 		}
@@ -581,7 +582,7 @@ func handleTestLine(s, packageName string) (string, bool, error) {
 	return s, hasYiuAll, nil
 }
 
-func handleExampleLine(s, packageName string) (string, string, error) {
+func handleExampleLine(s, packageName string, moduleF func() []YiuModule) (string, string, error) {
 	funcReg := regexp.MustCompile(`yiuAll\.Yiu[A-Z][\w]+(Get|Op|Is|Do|To)`)
 	if funcReg == nil {
 		return "", "", errors.New("handleExampleLine-funcReg-构造正则失败")
@@ -622,7 +623,7 @@ func handleExampleLine(s, packageName string) (string, string, error) {
 		return s, "", nil
 	} else {
 		packagePath := ""
-		mList := GetModuleList()
+		mList := moduleF()
 		for i := range mList {
 			if mList[i].PackageName == linePackage {
 				packagePath = mList[i].DirName
