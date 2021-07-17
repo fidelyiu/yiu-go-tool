@@ -18,8 +18,15 @@ func DoCmdAddPipe(cList ...*exec.Cmd) error {
 }
 
 // DoOpenFileManager 调用系统的文件管理器
+// 任何路径执行完该方法后，就相当于双击了该文件。
 func DoOpenFileManager(path string) error {
 	return yiuAll.YiuOsDoOpenFileManager(path)
+}
+
+// DoOpenFileManagerByParent 调用系统的文件管理器
+// 任何路径执行完该方法后，就相当于双击了该文件的父文件。
+func DoOpenFileManagerByParent(p string) error {
+	return yiuAll.YiuOsDoOpenFileManagerByParent(p)
 }
 
 // DoRunCmd 执行命令行，只返回 是否出错

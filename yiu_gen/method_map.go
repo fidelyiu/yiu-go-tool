@@ -241,6 +241,7 @@ func GetMethodMap() map[string]map[string][]string {
 			"DoRunCmdPipe",
 			"DoBuildCmdPipe",
 			"DoOpenFileManager",
+			"DoOpenFileManagerByParent",
 		},
 	}
 	allMethodMap["yiuTime"] = map[string][]string{

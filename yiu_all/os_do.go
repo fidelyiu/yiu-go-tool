@@ -4,6 +4,8 @@ import (
 	"bytes"
 	yiuM "github.com/fidelyiu/yiu-go-tool/yiu_model"
 	"os/exec"
+	"path"
+	"strings"
 )
 
 // YiuOsDoRunCmd 执行命令行，只返回 是否出错
@@ -89,6 +91,7 @@ func YiuOsDoBuildCmdPipe(cmdStrList []yiuM.CmdStr) error {
 }
 
 // YiuOsDoOpenFileManager 调用系统的文件管理器
+// 任何路径执行完该方法后，就相当于双击了该文件。
 func YiuOsDoOpenFileManager(path string) error {
 	if YiuOsIsTypeWindows() {
 		err := YiuOsDoRunCmd("cmd", "/C", "explorer "+path)
@@ -118,4 +121,15 @@ func YiuOsDoOpenFileManager(path string) error {
 		return err
 	}
 	return nil
+}
+
+// YiuOsDoOpenFileManagerByParent 调用系统的文件管理器
+// 任何路径执行完该方法后，就相当于双击了该文件的父文件。
+func YiuOsDoOpenFileManagerByParent(p string) error {
+	tp := strings.ReplaceAll(p, "\\", "/")
+	if tp == p {
+		return YiuOsDoOpenFileManager(path.Dir(p))
+	} else {
+		return YiuOsDoOpenFileManager(strings.ReplaceAll(path.Dir(tp), "/", "\\"))
+	}
 }
