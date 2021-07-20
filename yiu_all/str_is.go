@@ -97,7 +97,7 @@ func YiuStrIsEndWithLetterRune(str string) bool {
 	return YiuStrIsLetter(YiuStrGetLastRuneStr(str))
 }
 
-// YiuStrIsTure 判读字符串是否是true
+// YiuStrIsTrue 判读字符串是否是true
 //
 // "TRUE" >> true
 //
@@ -112,7 +112,7 @@ func YiuStrIsEndWithLetterRune(str string) bool {
 // "anyStr" >> false
 //
 // "not1" >> false
-func YiuStrIsTure(str string) bool {
+func YiuStrIsTrue(str string) bool {
 	return strings.ToLower(str) == strings.ToLower("true") || str == "1"
 }
 
@@ -132,7 +132,7 @@ func YiuStrIsTure(str string) bool {
 //
 // "not1" >> true
 func YiuStrIsFalse(str string) bool {
-	return !YiuStrIsTure(str)
+	return !YiuStrIsTrue(str)
 }
 
 // YiuStrIsContainsAnyByte 是否包含对比串的任意Byte

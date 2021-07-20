@@ -123,7 +123,7 @@ func IsStartWithLetterRune(str string) bool {
 	return yiuAll.YiuStrIsStartWithLetterRune(str)
 }
 
-// IsTure 判读字符串是否是true
+// IsTrue 判读字符串是否是true
 //
 // "TRUE" >> true
 //
@@ -138,8 +138,8 @@ func IsStartWithLetterRune(str string) bool {
 // "anyStr" >> false
 //
 // "not1" >> false
-func IsTure(str string) bool {
-	return yiuAll.YiuStrIsTure(str)
+func IsTrue(str string) bool {
+	return yiuAll.YiuStrIsTrue(str)
 }
 
 func IsUpperLetter(str string) bool {

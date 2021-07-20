@@ -338,7 +338,7 @@ func GetMethodMap() map[string]map[string][]string {
 			"IsEndWithLetterByte",   // 字母Byte结尾
 			"IsStartWithLetterRune", // 字母Rune开头
 			"IsEndWithLetterRune",   // 字母Rune结尾
-			"IsTure",
+			"IsTrue",
 			"IsFalse",
 			"IsContainsAnyByte",
 			"IsContainsAnyRune",
