@@ -92,13 +92,7 @@ func YiuOsDoBuildCmdPipe(cmdStrList []yiuM.CmdStr) error {
 
 // YiuOsDoRunCmdWidthPrefix 执行命令行，在前面加上c前缀
 func YiuOsDoRunCmdWidthPrefix(cmd string) error {
-	if YiuOsIsTypeWindows() {
-		err := YiuOsDoRunCmd("cmd", "/C", cmd)
-		return err
-	} else {
-		err := YiuOsDoRunCmd("bash", "-c", cmd)
-		return err
-	}
+	return YiuOsGetCmdWithPrefix(cmd).Run()
 }
 
 // YiuOsDoOpenFileManager 调用系统的文件管理器

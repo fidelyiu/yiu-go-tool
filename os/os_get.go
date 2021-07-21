@@ -11,6 +11,11 @@ func GetCmd(name string, arg ...string) *exec.Cmd {
 	return yiuAll.YiuOsGetCmd(name, arg...)
 }
 
+// GetCmdWithPrefix 获取命令行对象，带c前缀
+func GetCmdWithPrefix(cmd string) *exec.Cmd {
+	return yiuAll.YiuOsGetCmdWithPrefix(cmd)
+}
+
 // GetGoarch 获取系统架构
 // - 386
 // - amd64

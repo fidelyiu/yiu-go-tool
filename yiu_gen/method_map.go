@@ -200,6 +200,7 @@ func GetMethodMap() map[string]map[string][]string {
 			"GetType",   // 获取系统类型
 			"GetGoarch", // 获取系统架构
 			"GetCmd",    // 获取命令行对象
+			"GetCmdWithPrefix",
 		},
 		"Is": {
 			"IsTypeAndroid",

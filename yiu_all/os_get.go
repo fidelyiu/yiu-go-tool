@@ -51,3 +51,13 @@ func YiuOsGetGoarch() string {
 func YiuOsGetCmd(name string, arg ...string) *exec.Cmd {
 	return exec.Command(name, arg...)
 }
+
+// YiuOsGetCmdWithPrefix 获取命令行对象，带c前缀
+func YiuOsGetCmdWithPrefix(cmd string) *exec.Cmd {
+	if YiuOsIsTypeWindows() {
+		return exec.Command("cmd", "/C", cmd)
+	} else {
+		return exec.Command("bash", "-c", cmd)
+	}
+
+}
