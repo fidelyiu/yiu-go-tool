@@ -235,6 +235,7 @@ func GetMethodMap() map[string]map[string][]string {
 		},
 		"Do": {
 			"DoRunCmd",
+			"DoRunCmdWidthPrefix",
 			"DoRunCmdWithResult",
 			"DoRunCmdWithOutAndErr",
 			"DoCmdAddPipe",

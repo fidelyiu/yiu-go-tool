@@ -39,6 +39,11 @@ func DoRunCmdPipe(cList []*exec.Cmd) error {
 	return yiuAll.YiuOsDoRunCmdPipe(cList)
 }
 
+// DoRunCmdWidthPrefix 执行命令行，在前面加上c前缀
+func DoRunCmdWidthPrefix(cmd string) error {
+	return yiuAll.YiuOsDoRunCmdWidthPrefix(cmd)
+}
+
 // DoRunCmdWithOutAndErr 执行命令行，返回 错误结果、输出结果和是否出错
 func DoRunCmdWithOutAndErr(name string, arg ...string) ([]byte, []byte, error) {
 	return yiuAll.YiuOsDoRunCmdWithOutAndErr(name, arg...)

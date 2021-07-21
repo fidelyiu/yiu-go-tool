@@ -90,6 +90,17 @@ func YiuOsDoBuildCmdPipe(cmdStrList []yiuM.CmdStr) error {
 	return YiuOsDoRunCmdPipe(cList)
 }
 
+// YiuOsDoRunCmdWidthPrefix 执行命令行，在前面加上c前缀
+func YiuOsDoRunCmdWidthPrefix(cmd string) error {
+	if YiuOsIsTypeWindows() {
+		err := YiuOsDoRunCmd("cmd", "/C", cmd)
+		return err
+	} else {
+		err := YiuOsDoRunCmd("bash", "-c", cmd)
+		return err
+	}
+}
+
 // YiuOsDoOpenFileManager 调用系统的文件管理器
 // 任何路径执行完该方法后，就相当于双击了该文件。
 func YiuOsDoOpenFileManager(path string) error {
