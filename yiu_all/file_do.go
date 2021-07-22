@@ -18,5 +18,5 @@ func YiuFileDoCreate(filePath string) (*os.File, error) {
 	if YiuFileIsExists(filePath) {
 		return nil, yiuVar.BaseErrFileExists
 	}
-	return YiuFileDoOpen(filePath)
+	return os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE, 0666)
 }
