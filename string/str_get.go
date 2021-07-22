@@ -129,6 +129,11 @@ func GetLastRuneStr(str string) string {
 	return yiuAll.YiuStrGetLastRuneStr(str)
 }
 
+// GetReplaceEndStr 替换结尾的指定字符串
+func GetReplaceEndStr(s, end, r string) string {
+	return yiuAll.YiuStrGetReplaceEndStr(s, end, r)
+}
+
 // GetStrByRuneIndex 根据rune长度获取字符串中的字符串
 // "你好呀，Hello Yiu!" > 2 > "呀", nil
 //

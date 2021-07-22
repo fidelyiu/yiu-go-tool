@@ -326,6 +326,7 @@ func GetMethodMap() map[string]map[string][]string {
 			"GetDelEndRNStr",            // 去除结尾\r\n
 			"GetTureStr",
 			"GetFalseStr",
+			"GetReplaceEndStr",
 		},
 		"Is": {
 			"IsEmpty",               // 空
@@ -355,6 +356,7 @@ func GetMethodMap() map[string]map[string][]string {
 			"OpTrimRightSStr",
 			"OpDeleteSStr",
 			"OpFormatPathSeparator",
+			"OpReplaceEndStr",
 		},
 		"To": {
 			"ToStrList",              // 分割

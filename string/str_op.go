@@ -12,6 +12,11 @@ func OpFormatPathSeparator(str *string) {
 	yiuAll.YiuStrOpFormatPathSeparator(str)
 }
 
+// OpReplaceEndStr 替换结尾指定字符串
+func OpReplaceEndStr(str *string, end, r string) {
+	yiuAll.YiuStrOpReplaceEndStr(str, end, r)
+}
+
 // OpTrimLeftSStr 获取去除左边指定字符串后的字符串
 func OpTrimLeftSStr(str *string, targetStrArr ...string) {
 	yiuAll.YiuStrOpTrimLeftSStr(str, targetStrArr...)

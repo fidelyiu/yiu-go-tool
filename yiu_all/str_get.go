@@ -285,3 +285,12 @@ func YiuStrGetTureStr() string {
 func YiuStrGetFalseStr() string {
 	return "false"
 }
+
+// YiuStrGetReplaceEndStr 替换结尾的指定字符串
+func YiuStrGetReplaceEndStr(s, end, r string) string {
+	if strings.HasSuffix(s, end) {
+		return s[:strings.LastIndex(s, end)] + r
+	} else {
+		return s
+	}
+}

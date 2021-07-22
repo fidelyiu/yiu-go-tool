@@ -48,3 +48,11 @@ func YiuStrOpFormatPathSeparator(str *string) {
 	*str = strings.ReplaceAll(*str, "/", string(os.PathSeparator))
 	*str = strings.ReplaceAll(*str, "\\", string(os.PathSeparator))
 }
+
+// YiuStrOpReplaceEndStr 替换结尾指定字符串
+func YiuStrOpReplaceEndStr(str *string, end, r string) {
+	if str == nil {
+		return
+	}
+	*str = YiuStrGetReplaceEndStr(*str, end, r)
+}
