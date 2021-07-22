@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-func DoCreate(filePath string) (*os.File, error) {
+func DoCreate(filePath string) error {
 	return yiuAll.YiuFileDoCreate(filePath)
 }
 

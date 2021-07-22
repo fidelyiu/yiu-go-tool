@@ -14,9 +14,13 @@ func YiuFileDoOpen(filePath string) (*os.File, error) {
 	return os.OpenFile(filePath, os.O_RDWR, os.ModePerm)
 }
 
-func YiuFileDoCreate(filePath string) (*os.File, error) {
+func YiuFileDoCreate(filePath string) error {
 	if YiuFileIsExists(filePath) {
-		return nil, yiuVar.BaseErrFileExists
+		return yiuVar.BaseErrFileExists
 	}
-	return os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE, 0666)
+	file, err := os.OpenFile(filePath, os.O_WRONLY|os.O_CREATE, 0666)
+	defer func(file *os.File) {
+		_ = file.Close()
+	}(file)
+	return err
 }
