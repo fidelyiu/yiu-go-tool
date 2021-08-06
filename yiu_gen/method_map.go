@@ -269,6 +269,7 @@ func GetMethodMap() map[string]map[string][]string {
 			"ToStr18", // "April 9, 2021"
 			"ToStr19", // "April 9(th) 2021"
 			"ToStr20", // "April 9 2021"
+			"ToStr21", // "20210409"
 		},
 		"Get": {
 			"GetNowStrTransformMap",
@@ -293,6 +294,7 @@ func GetMethodMap() map[string]map[string][]string {
 			"GetNowStr18", // "April 9, 2021"
 			"GetNowStr19", // "April 9(th) 2021"
 			"GetNowStr20", // "April 9 2021"
+			"GetNowStr21", // "20210409"
 		},
 	}
 	allMethodMap["yiuBaseErr"] = map[string][]string{

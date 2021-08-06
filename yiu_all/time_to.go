@@ -28,6 +28,7 @@ func YiuTimeToStrTransformMap() map[string]string {
 		"ToStr18": "April 9, 2021",
 		"ToStr19": "April 9(st) 2021",
 		"ToStr20": "April 9 2021",
+		"ToStr21": "20210409",
 	}
 }
 
@@ -221,4 +222,10 @@ func YiuTimeToStr20(t time.Time) string {
 		t.Day(),
 		t.Year(),
 	)
+}
+
+// YiuTimeToStr21 格式化时间 => "20210409"
+// 其他格式参考 YiuTimeGetToStrTransformMap
+func YiuTimeToStr21(t time.Time) string {
+	return t.Format("20060102")
 }

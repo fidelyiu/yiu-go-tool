@@ -88,6 +88,12 @@ func GetNowStr20() string {
 	return yiuAll.YiuTimeGetNowStr20()
 }
 
+// GetNowStr21 获取当前时间字符串 "20210409"
+// 其他格式参考 GetNowStrTransformMap
+func GetNowStr21() string {
+	return yiuAll.YiuTimeGetNowStr21()
+}
+
 // GetNowStr3 获取当前时间字符串 "2021-4-9"
 // 其他格式参考 GetNowStrTransformMap
 func GetNowStr3() string {

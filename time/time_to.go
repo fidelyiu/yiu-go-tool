@@ -83,6 +83,12 @@ func ToStr20(t time.Time) string {
 	return yiuAll.YiuTimeToStr20(t)
 }
 
+// ToStr21 格式化时间 => "20210409"
+// 其他格式参考 GetToStrTransformMap
+func ToStr21(t time.Time) string {
+	return yiuAll.YiuTimeToStr21(t)
+}
+
 // ToStr3 格式化时间 => "2021-4-9"
 // 其他格式参考 GetToStrTransformMap
 func ToStr3(t time.Time) string {
