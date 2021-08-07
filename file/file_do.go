@@ -5,6 +5,10 @@ import (
 	"os"
 )
 
+func DoCopy(src, dest string) error {
+	return yiuAll.YiuFileDoCopy(src, dest)
+}
+
 func DoCreate(filePath string) error {
 	return yiuAll.YiuFileDoCreate(filePath)
 }

@@ -11,4 +11,7 @@ var (
 	BaseErrAddrNil         = errors.New(yiuLang.GetErrAddrNilLang())
 	BaseErrIndexOutOfBound = errors.New(yiuLang.GetErrIndexOutOfBoundLang())
 	BaseErrFileExists      = errors.New(yiuLang.GetErrFileExistsLang())
+	BaseErrFileNotExists   = errors.New(yiuLang.GetErrFileNotExistsLang())
+	BaseErrDirExists       = errors.New(yiuLang.GetErrDirExistsLang())
+	BaseErrDirNotExists    = errors.New(yiuLang.GetErrDirNotExistsLang())
 )

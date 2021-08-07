@@ -44,3 +44,30 @@ func GetErrFileExistsLang() string {
 		return "文件已存在"
 	}
 }
+
+func GetErrFileNotExistsLang() string {
+	switch Lang {
+	case _enUS:
+		return "File does not exist"
+	default:
+		return "文件不存在"
+	}
+}
+
+func GetErrDirExistsLang() string {
+	switch Lang {
+	case _enUS:
+		return "Directory already exists"
+	default:
+		return "目录已存在"
+	}
+}
+
+func GetErrDirNotExistsLang() string {
+	switch Lang {
+	case _enUS:
+		return "Directory does not exist"
+	default:
+		return "目录不存在"
+	}
+}

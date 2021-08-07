@@ -6,8 +6,20 @@ func IsAddrNil(err error) bool {
 	return yiuAll.YiuBaseErrIsAddrNil(err)
 }
 
+func IsDirExists(err error) bool {
+	return yiuAll.YiuBaseErrIsDirExists(err)
+}
+
+func IsDirNotExists(err error) bool {
+	return yiuAll.YiuBaseErrIsDirNotExists(err)
+}
+
 func IsFileExists(err error) bool {
 	return yiuAll.YiuBaseErrIsFileExists(err)
+}
+
+func IsFileNotExists(err error) bool {
+	return yiuAll.YiuBaseErrIsFileNotExists(err)
 }
 
 func IsIndexOutOfBound(err error) bool {

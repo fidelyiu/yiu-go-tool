@@ -11,9 +11,7 @@ func YiuFileIsExists(path string) bool {
 		// 路径指向有效
 		return !osInfo.IsDir()
 	}
-	if os.IsNotExist(err) {
-		// 文件或文件夹不存在
-		return false
-	}
+	// return !os.IsNotExist(err)
+	// 此时就算文件存在，但是还是不能确定是文件
 	return false
 }

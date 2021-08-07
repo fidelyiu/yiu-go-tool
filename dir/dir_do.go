@@ -2,6 +2,10 @@ package yiuDir
 
 import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
 
+func DoCopy(src, dest string) error {
+	return yiuAll.YiuDirDoCopy(src, dest)
+}
+
 // DoMkDir 使用 os.ModePerm 模式创建一个文件夹，参数只能是一个文件夹名，不能是路径，
 // 如果需要其他模式，直接调用 os.Mkdir()
 func DoMkDir(dirName string) error {

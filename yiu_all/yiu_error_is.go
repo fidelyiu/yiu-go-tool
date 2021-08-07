@@ -20,3 +20,12 @@ func YiuBaseErrIsIndexOutOfBound(err error) bool {
 func YiuBaseErrIsFileExists(err error) bool {
 	return errors.Is(err, yiuVar.BaseErrFileExists)
 }
+func YiuBaseErrIsFileNotExists(err error) bool {
+	return errors.Is(err, yiuVar.BaseErrFileNotExists)
+}
+func YiuBaseErrIsDirExists(err error) bool {
+	return errors.Is(err, yiuVar.BaseErrDirExists)
+}
+func YiuBaseErrIsDirNotExists(err error) bool {
+	return errors.Is(err, yiuVar.BaseErrDirNotExists)
+}

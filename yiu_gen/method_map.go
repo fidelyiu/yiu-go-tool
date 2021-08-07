@@ -80,6 +80,7 @@ func GetMethodMap() map[string]map[string][]string {
 			"DoMkDirAll",       // 递归创建
 			"DoMkDirByTime",    // 按照时间创建
 			"DoMkDirAllByTime", // 按照时间递归创建
+			"DoCopy",
 		},
 	}
 	allMethodMap["yiuErr"] = map[string][]string{
@@ -102,6 +103,7 @@ func GetMethodMap() map[string]map[string][]string {
 		"Do": {
 			"DoOpen",   // 打开文件，不存在报错
 			"DoCreate", // 如果存在会报错
+			"DoCopy",
 		},
 	}
 	allMethodMap["yiuInt"] = map[string][]string{
@@ -304,6 +306,9 @@ func GetMethodMap() map[string]map[string][]string {
 			"IsAddrNil",
 			"IsIndexOutOfBound",
 			"IsFileExists",
+			"IsFileNotExists",
+			"IsDirExists",
+			"IsDirNotExists",
 		},
 	}
 	allMethodMap["yiuStr"] = map[string][]string{
