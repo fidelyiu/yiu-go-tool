@@ -2,6 +2,11 @@ package yiuDir
 
 import yiuAll "github.com/fidelyiu/yiu-go-tool/yiu_all"
 
+// DoCopy 拷贝文件夹(包括内容)
+//
+// Go中路径需要注意：
+// "/"：标识根目录
+// "./"：项目根目录
 func DoCopy(src, dest string) error {
 	return yiuAll.YiuDirDoCopy(src, dest)
 }

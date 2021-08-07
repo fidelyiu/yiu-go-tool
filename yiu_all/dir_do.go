@@ -31,6 +31,11 @@ func YiuDirDoMkDirAllByTime(dirName string) error {
 	return os.MkdirAll(dirName+string(os.PathSeparator)+YiuTimeGetNowStr8(), os.ModePerm)
 }
 
+// YiuDirDoCopy 拷贝文件夹(包括内容)
+//
+// Go中路径需要注意：
+// "/"：标识根目录
+// "./"：项目根目录
 func YiuDirDoCopy(src, dest string) error {
 	if !YiuDirIsExists(src) {
 		return yiuVar.BaseErrDirNotExists
@@ -65,7 +70,7 @@ func copyDirItem(src, dest string, file fs.FileInfo) error {
 		if err != nil {
 			return err
 		}
-		rd, readErr := ioutil.ReadDir(src)
+		rd, readErr := ioutil.ReadDir(srcFile)
 		if readErr != nil {
 			return readErr
 		}
