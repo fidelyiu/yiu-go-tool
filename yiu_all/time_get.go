@@ -28,6 +28,7 @@ func YiuTimeGetNowStrTransformMap() map[string]string {
 		"GetNowStr19": "April 9(st) 2021",
 		"GetNowStr20": "April 9 2021",
 		"GetNowStr21": "20210409",
+		"GetNowStr22": "120446",
 	}
 }
 
@@ -208,4 +209,11 @@ func YiuTimeGetNowStr20() string {
 func YiuTimeGetNowStr21() string {
 	now := time.Now()
 	return YiuTimeToStr21(now)
+}
+
+// YiuTimeGetNowStr22 获取当前时间字符串 "120446"
+// 其他格式参考 GetNowStrTransformMap
+func YiuTimeGetNowStr22() string {
+	now := time.Now()
+	return YiuTimeToStr22(now)
 }

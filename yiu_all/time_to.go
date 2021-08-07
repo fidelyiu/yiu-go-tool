@@ -29,11 +29,12 @@ func YiuTimeToStrTransformMap() map[string]string {
 		"ToStr19": "April 9(st) 2021",
 		"ToStr20": "April 9 2021",
 		"ToStr21": "20210409",
+		"ToStr22": "120446",
 	}
 }
 
 // YiuTimeToStr1 格式化时间 => "2021-4-9 12:4:46"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr1(t time.Time) string {
 	nowStr := fmt.Sprintf("%d-%d-%d %d:%d:%d",
 		t.Year(),
@@ -46,13 +47,13 @@ func YiuTimeToStr1(t time.Time) string {
 }
 
 // YiuTimeToStr2 格式化时间 => "2021-04-09 12:04:46"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr2(t time.Time) string {
 	return t.Format("2006-01-02 15:04:05")
 }
 
 // YiuTimeToStr3 格式化时间 => "2021-4-9"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr3(t time.Time) string {
 	nowStr := fmt.Sprintf("%d-%d-%d",
 		t.Year(),
@@ -62,13 +63,13 @@ func YiuTimeToStr3(t time.Time) string {
 }
 
 // YiuTimeToStr4 格式化时间 => "2021-04-09"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr4(t time.Time) string {
 	return t.Format("2006-01-02")
 }
 
 // YiuTimeToStr5 格式化时间 => "12:4:46"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr5(t time.Time) string {
 	nowStr := fmt.Sprintf("%d:%d:%d",
 		t.Hour(),
@@ -79,13 +80,13 @@ func YiuTimeToStr5(t time.Time) string {
 }
 
 // YiuTimeToStr6 格式化时间 => "12:04:46"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr6(t time.Time) string {
 	return t.Format("15:04:05")
 }
 
 // YiuTimeToStr7 格式化时间 => "20214912446"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr7(t time.Time) string {
 	nowStr := fmt.Sprintf("%d%d%d%d%d%d",
 		t.Year(),
@@ -98,13 +99,13 @@ func YiuTimeToStr7(t time.Time) string {
 }
 
 // YiuTimeToStr8 格式化时间 => "20210409120446"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr8(t time.Time) string {
 	return t.Format("20060102150405")
 }
 
 // YiuTimeToStr9 格式化时间 => "2021-4-9 12:4:46.195482"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr9(t time.Time) string {
 	nowStr := fmt.Sprintf("%d-%d-%d %d:%d:%d.%d",
 		t.Year(),
@@ -118,7 +119,7 @@ func YiuTimeToStr9(t time.Time) string {
 }
 
 // YiuTimeToStr10 格式化时间 => "2021-04-09 12:04:46.195482"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr10(t time.Time) string {
 	nowStr := fmt.Sprintf(t.Format("2006-01-02 15:04:05")+".%d",
 		t.Nanosecond())
@@ -126,7 +127,7 @@ func YiuTimeToStr10(t time.Time) string {
 }
 
 // YiuTimeToStr11 格式化时间 => "20214912446195482"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr11(t time.Time) string {
 	nowStr := fmt.Sprintf("%d%d%d%d%d%d%d",
 		t.Year(),
@@ -140,7 +141,7 @@ func YiuTimeToStr11(t time.Time) string {
 }
 
 // YiuTimeToStr12 格式化时间 => "20210409120446195482"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr12(t time.Time) string {
 	nowStr := fmt.Sprintf(t.Format("20060102150405")+"%d",
 		t.Nanosecond())
@@ -148,7 +149,7 @@ func YiuTimeToStr12(t time.Time) string {
 }
 
 // YiuTimeToStr13 格式化时间 => "2021年4月9日 12时4分46秒"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr13(t time.Time) string {
 	nowStr := fmt.Sprintf("%d年%d月%d日 %d时%d分%d秒",
 		t.Year(),
@@ -161,13 +162,13 @@ func YiuTimeToStr13(t time.Time) string {
 }
 
 // YiuTimeToStr14 格式化时间 => "2021年04月09日 12时04分46秒"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr14(t time.Time) string {
 	return t.Format("2006年01月02日 15时04分05秒")
 }
 
 // YiuTimeToStr15 格式化时间 => "2021年4月9日"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr15(t time.Time) string {
 	nowStr := fmt.Sprintf("%d年%d月%d日",
 		t.Year(),
@@ -177,13 +178,13 @@ func YiuTimeToStr15(t time.Time) string {
 }
 
 // YiuTimeToStr16 格式化时间 => "2021年04月09日"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr16(t time.Time) string {
 	return t.Format("2006年01月02日")
 }
 
 // YiuTimeToStr17 格式化时间 => "April 9(st), 2021"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr17(t time.Time) string {
 	return fmt.Sprintf("%s %d(%s), %d",
 		YiuTimeGetMonthEnglish(t.Month()),
@@ -194,7 +195,7 @@ func YiuTimeToStr17(t time.Time) string {
 }
 
 // YiuTimeToStr18 格式化时间 => "April 9, 2021"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr18(t time.Time) string {
 	return fmt.Sprintf("%s %d, %d",
 		YiuTimeGetMonthEnglish(t.Month()),
@@ -204,7 +205,7 @@ func YiuTimeToStr18(t time.Time) string {
 }
 
 // YiuTimeToStr19 格式化时间 => "April 9(st) 2021"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr19(t time.Time) string {
 	return fmt.Sprintf("%s %d(%s) %d",
 		YiuTimeGetMonthEnglish(t.Month()),
@@ -215,7 +216,7 @@ func YiuTimeToStr19(t time.Time) string {
 }
 
 // YiuTimeToStr20 格式化时间 => "April 9 2021"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr20(t time.Time) string {
 	return fmt.Sprintf("%s %d %d",
 		YiuTimeGetMonthEnglish(t.Month()),
@@ -225,7 +226,13 @@ func YiuTimeToStr20(t time.Time) string {
 }
 
 // YiuTimeToStr21 格式化时间 => "20210409"
-// 其他格式参考 YiuTimeGetToStrTransformMap
+// 其他格式参考 ToStrTransformMap
 func YiuTimeToStr21(t time.Time) string {
 	return t.Format("20060102")
+}
+
+// YiuTimeToStr22 格式化时间 => "120446"
+// 其他格式参考 ToStrTransformMap
+func YiuTimeToStr22(t time.Time) string {
+	return t.Format("150405")
 }
